@@ -12,7 +12,7 @@ const StyledHeader = styled.h1`
 const Index = () => {
   return (
     <MainLayout title="Fantasy Football Personal Rankings Assistant">
-      <StyledHeader>Index Page</StyledHeader>
+      <StyledHeader>Don't be a slave to someone else's rankings at your draft</StyledHeader>
     </MainLayout>
   );
 };
