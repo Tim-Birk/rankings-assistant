@@ -1,5 +1,17 @@
-require('dotenv').config();
-const { BRANCH, GRAPHCMSURL, GRAPHCMSPROJECTID } = process.env;
+require("dotenv").config();
+
+const {
+  BRANCH,
+  GRAPHCMSURL,
+  GRAPHCMSPROJECTID,
+  domain,
+  clientId,
+  clientSecret,
+  scope,
+  redirectUri,
+  postLogoutRedirectUri,
+  cookieSecret,
+} = process.env;
 
 module.exports = {
   publicRuntimeConfig: {
@@ -8,5 +20,16 @@ module.exports = {
       GRAPHCMSURL,
       GRAPHCMSPROJECTID,
     },
+  },
+  serverRuntimeConfig: {
+    auth: {
+      domain,
+      clientId,
+      clientSecret,
+      scope,
+      redirectUri,
+      postLogoutRedirectUri,
+    },
+    cookieSecret,
   },
 };

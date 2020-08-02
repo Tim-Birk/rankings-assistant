@@ -1,12 +1,12 @@
-import styled from 'styled-components';
-import { Layout, Menu } from 'antd';
-import Link from 'next/link';
-
+import styled from "styled-components";
+import { Layout, Menu } from "antd";
+import Link from "next/link";
+import { useFetchUser } from "../../utils/user";
 const { Header } = Layout;
 
 const TitleContainer = styled.div`
   ${({ theme }) => `
-        background-color: ${theme['header-color']};
+        background-color: ${theme["header-color"]};
         width: 50%;
         display: flex;
         align-items: center;
@@ -23,7 +23,7 @@ const Title = styled.div`
             line-height: 50px;
             div {
                 width: 100%;
-                padding-left: ${theme['padding-small']};
+                padding-left: ${theme["padding-small"]};
             }
             h2 {
                 display: inline;
@@ -39,14 +39,14 @@ const Title = styled.div`
 `;
 const StyledHeader = styled(Header)`
   ${({ theme }) => `
-        background-color: ${theme['header-color']};
-        border-bottom-color: ${theme['header-border-color']};
+        background-color: ${theme["header-color"]};
+        border-bottom-color: ${theme["header-border-color"]};
         border-bottom-right: 1px;
         border-bottom-style: solid;
         text-align: right;
         display: flex;
         li {
-            font-size: ${theme['font-size-md']};
+            font-size: ${theme["font-size-md"]};
         }
     `}
 `;
@@ -58,24 +58,46 @@ const StyledMenu = styled(Menu)`
   }
 `;
 
+export const MainNavbar = () => {
+  const { user, loading } = useFetchUser();
 
-export const MainNavbar = () => (
-  <StyledHeader>
-    <TitleContainer>
-      <Title>
-        <img src="/logo.svg" alt="Rankings Assistant Logo" />
-        <div>
-          <h2>Rankings Assistant</h2>
-          <p>Your personal fantasy football rankings assistant</p>
-        </div>
-      </Title>
-    </TitleContainer>
-    <StyledMenu theme="light" mode="horizontal" style={{ lineHeight: '64px' }}>
-      <Menu.Item key="/">
-        <Link href="/">
-          <a>Home</a>
-        </Link>
-      </Menu.Item>
-    </StyledMenu>
-  </StyledHeader>
-);
+  return (
+    <StyledHeader>
+      <TitleContainer>
+        <Title>
+          <img src="/logo.svg" alt="Rankings Assistant Logo" />
+          <div>
+            <h2>Rankings Assistant</h2>
+            <p>Your personal fantasy football rankings assistant</p>
+          </div>
+        </Title>
+      </TitleContainer>
+      <StyledMenu
+        theme="light"
+        mode="horizontal"
+        style={{ lineHeight: "64px" }}
+      >
+        <Menu.Item key="/">
+          <Link href="/">
+            <a>Home</a>
+          </Link>
+        </Menu.Item>
+        {user && !loading
+          ? [
+              <Menu.Item key="/api/logout">
+                <Link href="/api/logout">
+                  <a>Logout</a>
+                </Link>
+              </Menu.Item>,
+            ]
+          : [
+              <Menu.Item key="/api/login">
+                <Link href="/api/login">
+                  <a>Login</a>
+                </Link>
+              </Menu.Item>,
+            ]}
+      </StyledMenu>
+    </StyledHeader>
+  );
+};
