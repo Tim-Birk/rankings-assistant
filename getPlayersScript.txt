@@ -1,0 +1,30 @@
+
+let players = [];
+let playerNames = document.querySelectorAll(".player-name");
+let playerPortraits = document.querySelectorAll(".player-portrait img");
+
+for (let i = 0; i < playerNames.length; i++) {
+  const rank = i + 1;
+  const name = playerNames[i].innerText;
+  let image = null;
+  const playersAhead = [];
+  const playersBehind = [];
+
+  try {
+    if (playerPortraits[i].src){
+      image = playerPortraits[i].src
+    }
+  } catch {
+    console.log('error')
+  }
+  let player = {
+    rank,
+    name,
+    image,
+    playersAhead,
+    playersBehind
+  }
+  players.push(player)
+}
+
+console.log(players)

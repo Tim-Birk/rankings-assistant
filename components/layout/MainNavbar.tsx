@@ -6,10 +6,12 @@ const { Header } = Layout;
 
 const TitleContainer = styled.div`
   ${({ theme }) => `
-        background-color: ${theme["header-color"]};
+        background-color: rgba(5, 5, 5, 0.8);
+        color: rgba(255, 255, 255, 0.90);
         width: 50%;
         display: flex;
         align-items: center;
+
         @media (max-width: 890px){
             visibility: hidden;
             width: 0;
@@ -18,31 +20,30 @@ const TitleContainer = styled.div`
 `;
 const Title = styled.div`
   ${({ theme }) => `
-            text-align: left;
-            display: flex;
-            line-height: 50px;
-            div {
-                width: 100%;
-                padding-left: ${theme["padding-small"]};
-            }
-            h2 {
-                display: inline;
-                color: inherit;
-            }
-            img {
-                width: 64px;
-            }
-            p {
-              line-height: 0;
-            }
-        `}
+      color: rgba(255, 255, 255, 0.90);
+      text-align: left;
+      display: flex;
+      line-height: 50px;
+      div {
+          width: 100%;
+          padding-left: ${theme["padding-small"]};
+      }
+      h2 {
+          display: inline;
+          color: inherit;
+      }
+      img {
+          width: 64px;
+      }
+      p {
+        line-height: 0;
+      }
+  `}
 `;
 const StyledHeader = styled(Header)`
   ${({ theme }) => `
         background-color: ${theme["header-color"]};
         border-bottom-color: ${theme["header-border-color"]};
-        border-bottom-right: 1px;
-        border-bottom-style: solid;
         text-align: right;
         display: flex;
         li {
@@ -53,36 +54,45 @@ const StyledHeader = styled(Header)`
 const StyledMenu = styled(Menu)`
   border-bottom-width: 0px;
   width: 50%;
+  display: flex;
+  justify-content: flex-end;
   @media (max-width: 890px) {
     width: 100%;
+    justify-content: center;
   }
 `;
+
+const StyledLink = styled(Link)``;
 
 export const MainNavbar = () => {
   const { user, loading } = useFetchUser();
 
   return (
-    <StyledHeader>
+    <StyledHeader style={{ backgroundColor: "rgba(5, 5, 5, 1)" }}>
       <TitleContainer>
-        <Title>
-          <img src="/logo.svg" alt="Rankings Assistant Logo" />
-          <div>
-            <h2>Rankings Assistant</h2>
-            <p>Your personal fantasy football rankings assistant</p>
-          </div>
-        </Title>
+        <StyledLink href="/">
+          <a>
+            <Title>
+              <img src="/logo.svg" alt="Rankings Assistant Logo" />
+              <div>
+                <h2>Rankings Assistant</h2>
+                <p>Your personal fantasy football rankings assistant</p>
+              </div>
+            </Title>
+          </a>
+        </StyledLink>
       </TitleContainer>
       <StyledMenu
-        theme="light"
+        theme="dark"
         mode="horizontal"
-        style={{ lineHeight: "64px" }}
+        style={{ lineHeight: "64px", backgroundColor: "rgba(5, 5, 5, 0.8)" }}
       >
         <Menu.Item key="/">
           <Link href="/">
-            <a>Home</a>
+            <a style={{ color: "rgba(255, 255, 255, 0.90)" }}>Home</a>
           </Link>
         </Menu.Item>
-        {user && !loading
+        {/* {user && !loading
           ? [
               <Menu.Item key="/api/logout">
                 <Link href="/api/logout">
@@ -96,7 +106,7 @@ export const MainNavbar = () => {
                   <a>Login</a>
                 </Link>
               </Menu.Item>,
-            ]}
+            ]} */}
       </StyledMenu>
     </StyledHeader>
   );
