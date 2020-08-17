@@ -24,7 +24,6 @@ export class MainLayout extends Component<Props> {
         <Layout>
           <MainNavbar />
           <Content>{children}</Content>
-          <MainFooter />
         </Layout>
       </ThemeProvider>
     );

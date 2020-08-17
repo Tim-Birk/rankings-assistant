@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { Row, Col } from "antd";
 import styled from "styled-components";
-import PlayerCard from "./PlayerCard";
-import FlipCard from "./FlipCard"
-
+import Card from "./FlipCard2";
 
 const StyledPlayerCardsContainer = styled(Row)`
   ${({ theme }) => `
-      max-width: 700px;
-      margin: ${theme["margin-small"]} auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: ${theme["margin-small"]};
+      width: 505px
     `}
 `;
 
@@ -21,17 +22,40 @@ const StyledOR = styled(Col)`
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      margin-bottom: 3.5em;
-      
+      text-shadow: 0px 1px 7px rgba(99,99,99,1);
+      margin: 0 10px 2em;
     `}
 `;
 
-const PlayerComparison = ({ playerA, playerB, advanceNextPick }) => {
+const PlayerComparison = ({
+  playerA,
+  playerB,
+  advanceNextPick,
+  setGameState,
+}) => {
+  const [flippedA, setFlippedA] = useState(true);
+  const [flippedB, setFlippedB] = useState(true);
   return (
     <StyledPlayerCardsContainer>
-      <FlipCard player={playerA} otherPlayer={playerB}  advanceNextPick={advanceNextPick} />
+      <Card
+        player={playerA}
+        otherPlayer={playerB}
+        advanceNextPick={advanceNextPick}
+        setGameState={setGameState}
+        flipped={flippedA}
+        set={setFlippedA}
+        setOther={setFlippedB}
+      />
       <StyledOR span={2}>VS</StyledOR>
-      <FlipCard player={playerB} otherPlayer={playerA}  advanceNextPick={advanceNextPick} />
+      <Card
+        player={playerB}
+        otherPlayer={playerA}
+        advanceNextPick={advanceNextPick}
+        setGameState={setGameState}
+        flipped={flippedB}
+        set={setFlippedB}
+        setOther={setFlippedA}
+      />
     </StyledPlayerCardsContainer>
   );
 };

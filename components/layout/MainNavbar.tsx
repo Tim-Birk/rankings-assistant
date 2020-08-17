@@ -62,7 +62,7 @@ const StyledMenu = styled(Menu)`
   }
 `;
 
-const StyledLink = styled(Link)``;
+// const StyledLink = styled(Link)``;
 
 export const MainNavbar = () => {
   const { user, loading } = useFetchUser();
@@ -70,7 +70,7 @@ export const MainNavbar = () => {
   return (
     <StyledHeader style={{ backgroundColor: "rgba(5, 5, 5, 1)" }}>
       <TitleContainer>
-        <StyledLink href="/">
+        <Link href="/">
           <a>
             <Title>
               <img src="/logo.svg" alt="Rankings Assistant Logo" />
@@ -80,7 +80,7 @@ export const MainNavbar = () => {
               </div>
             </Title>
           </a>
-        </StyledLink>
+        </Link>
       </TitleContainer>
       <StyledMenu
         theme="dark"

@@ -6,6 +6,7 @@ import PlayerComparison from "./PlayerComparison";
 import { permutations } from "mathjs";
 import Modal from "antd/lib/modal/Modal";
 import PaperList from "./PaperList";
+import { Loading } from "./notify/Loading";
 
 const { Option } = Select;
 
@@ -107,28 +108,59 @@ const StyledGameOverContainer = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
+      border-top: solid 1px #FFF;
+      border-bottom: solid 1px #FFF;
     `}
 `;
 
+const GameListContainer = styled.div`
+  ${({ theme }) => `
+
+    @media ${theme.device.mobileL} { 
+        display: grid;
+        grid-template-columns:  3fr 1fr;
+        max-width: 1000px;
+    }
+
+  `}
+`;
+
+const PlayerComparisonContainer = styled.div`
+  ${({ theme }) => `
+    
+
+    @media ${theme.device.mobileL} { 
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+  `}
+`;
+
 const AppContainer = () => {
-  const [numberTopPlayers, setNumberTopPlayers] = useState(10);
+  const [numberTopPlayers, setNumberTopPlayers] = useState(15);
   const [currentPosition, setCurrentPosition] = useState("RB");
-  const [defaultRanks, setDefaultRanks] = useState([]);
-  const [currentPick, setCurrentPick] = useState(1);
-  const [playerA, setPlayerA] = useState(null);
-  const [playerB, setPlayerB] = useState(null);
-  const [possibleComparisons, setPossibleComparisons] = useState(
-    permutations(25, 2)
-  );
-  const [gameOver, setGameOver] = useState(false);
-  const [softRanks, setSoftRanks] = useState([]);
   const [visible, setVisible] = useState(false);
+
+  const [gameState, setGameState] = useState({
+    defaultRanks: [],
+    currentPick: 1,
+    playerA: null,
+    playerB: null,
+    softRanks: [],
+    possibleComparisons: permutations(25, 2),
+    gameOver: false,
+    isLoading: false,
+    consecutivePlayerPick: 1,
+  });
 
   const showModal = () => {
     setVisible(true);
   };
 
   const handleOk = (e) => {
+    startNew();
     setVisible(false);
   };
 
@@ -154,14 +186,40 @@ const AppContainer = () => {
           startRanks.push({ ...pos, playersBehind: [], playersAhead: [] });
         }
       });
+    } else if (currentPosition === "TE") {
+      const { tightEnds } = Players;
+      tightEnds.forEach((pos) => {
+        if (pos.rank <= numberTopPlayers) {
+          startRanks.push({ ...pos, playersBehind: [], playersAhead: [] });
+        }
+      });
+    } else if (currentPosition === "QB") {
+      const { quarterBacks } = Players;
+      quarterBacks.forEach((pos) => {
+        if (pos.rank <= numberTopPlayers) {
+          startRanks.push({ ...pos, playersBehind: [], playersAhead: [] });
+        }
+      });
     }
-    setDefaultRanks((state) => [...startRanks]);
-    setPossibleComparisons(permutations(numberTopPlayers, 2));
-    setCurrentPick(1);
-    setPlayerA(startRanks[0]);
-    setPlayerB(startRanks[1]);
-    setGameOver(false);
-    setSoftRanks([]);
+
+    setGameState({
+      gameOver: false,
+      possibleComparisons: permutations(numberTopPlayers, 2),
+      defaultRanks: [...startRanks],
+      currentPick: 1,
+      playerA: startRanks[0],
+      playerB: startRanks[1],
+      softRanks: [],
+      isLoading: false,
+      consecutivePlayerPick: 1,
+    });
+    // setGameOver(false);
+    // setPossibleComparisons(permutations(numberTopPlayers, 2));
+    // setDefaultRanks((state) => [...startRanks]);
+    // setCurrentPick(1);
+    // setPlayerA(startRanks[0]);
+    // setPlayerB(startRanks[1]);
+    // setSoftRanks([]);
   };
 
   function onlyUnique(value, index, self) {
@@ -172,7 +230,7 @@ const AppContainer = () => {
     // All players behind current player
     //// Players currently behind the player
     //// Players behind the players above
-    const playerBehind = getPlayerByName(defaultRanks, currentPlayer);
+    const playerBehind = getPlayerByName(gameState.defaultRanks, currentPlayer);
     let allPlayersBehindPlayer = [];
     playerBehind.playersAhead.forEach((pb) => allPlayersBehindPlayer.push(pb));
 
@@ -192,8 +250,8 @@ const AppContainer = () => {
     //// Players currently ahead the player
     //// Players ahead the players above
 
-    console.log(currentPlayer);
-    const playerAhead = getPlayerByName(defaultRanks, currentPlayer);
+    // console.log(currentPlayer);
+    const playerAhead = getPlayerByName(gameState.defaultRanks, currentPlayer);
     let allPlayersAheadOfPlayer = [];
     playerAhead.playersBehind.forEach((pb) => allPlayersAheadOfPlayer.push(pb));
 
@@ -207,28 +265,6 @@ const AppContainer = () => {
     return allPlayersAheadOfPlayer;
   };
 
-  // const getPlayersAheadOfPlayer = (currentPlayer) => {
-  //   // All players ahead of current player
-  //   //// Players currently ahead the player
-  //   //// Players ahead the players above
-
-  //   console.log(currentPlayer)
-  //   let allPlayersAheadOfPlayer = [];
-  //   currentPlayer.playersBehind.forEach((pb) =>
-  //     allPlayersAheadOfPlayer.push(pb)
-  //   );
-
-  //   allPlayersAheadOfPlayer.forEach((pb) => {
-  //     const playerAhead = getPlayerByName(defaultRanks, pb);
-  //     const newAllPlayersAhead = getPlayersAheadOfPlayer(playerAhead);
-  //     allPlayersAheadOfPlayer = allPlayersAheadOfPlayer
-  //       .concat(newAllPlayersAhead)
-  //       .filter(onlyUnique);
-  //   });
-
-  //   return allPlayersAheadOfPlayer;
-  // };
-
   const getPlayerAndPlayersAhead = (player) => {
     let playerAndPlayersAhead = getPlayersAheadOfPlayer(player.name);
     playerAndPlayersAhead.push(player.name);
@@ -241,7 +277,7 @@ const AppContainer = () => {
     return playerAndPlayersBehind;
   };
 
-  const advanceNextPick = (winningPlayer, losingPlayer) => {
+  const advanceNextPick = async (winningPlayer, losingPlayer) => {
     // winning player and winningPlayer.playersAhead all need to have their playersBehind updated with losing player and all losing player's playersBehind
     // losing player and losingPlayer.playersBehind all need to have their playersAhead updated with winning player and all winning player's playersAhead
 
@@ -268,7 +304,7 @@ const AppContainer = () => {
     console.log(winnerAndPlayersAhead);
     console.log(loserAndPlayersAhead);
 
-    const newRanks = defaultRanks.map((player) => {
+    const newRanks = gameState.defaultRanks.map((player) => {
       // check if player in winnersAndPlayersAhead
       const checkPlayerWPA = winnerAndPlayersAhead.filter(
         (wpa) => wpa === player.name
@@ -355,7 +391,11 @@ const AppContainer = () => {
     // initialze variables for next state
     let newPlayerA = losingPlayer;
     let newPlayerB = null;
-    const newCurrentPick = currentPick + 1;
+    const newCurrentPick = gameState.currentPick + 1;
+    let consecutivePlayerPick =
+      newPlayerA === gameState.playerA
+        ? gameState.consecutivePlayerPick + 1
+        : 1;
 
     // get a new randomPlayer
     const randomPlayer = getRandomPlayer(newRanks);
@@ -365,7 +405,8 @@ const AppContainer = () => {
     // // make sure that the new randomPlayer does not exist in any of the comparisons (new or old)
     if (
       !checkIsSamePlayer(newPlayerA, randomPlayer) &&
-      !checkComparisonAlreadyExists(newPlayerA, randomPlayer)
+      !checkComparisonAlreadyExists(newPlayerA, randomPlayer) &&
+      !(consecutivePlayerPick >= 3)
     ) {
       newPlayerB = randomPlayer;
     } else {
@@ -376,7 +417,8 @@ const AppContainer = () => {
       const newPlayers = getTwoPlayersNotCompared(newRanks);
       if (newPlayers.length === 0) {
         console.log("game ended because no two random players found");
-        setGameOver(true);
+        // setGameOver(true);
+        setGameState((st) => ({ ...st, gameOver: true, isLoading: false }));
       } else {
         newPlayerA = newPlayers[0];
         newPlayerB = newPlayers[1];
@@ -387,12 +429,26 @@ const AppContainer = () => {
     let newSoftRanks = newRanks.filter((nr) => nr.softRank);
     newSoftRanks = newSoftRanks.sort(compareSoftRank);
 
+    if (consecutivePlayerPick >= 3) {
+      // reset Pick
+      consecutivePlayerPick = 1
+    }
     // Set newState
-    setDefaultRanks(newRanks);
-    setPlayerA(newPlayerA);
-    setPlayerB(newPlayerB);
-    setCurrentPick(newCurrentPick);
-    setSoftRanks(newSoftRanks);
+    setGameState((st) => ({
+      ...st,
+      defaultRanks: newRanks,
+      playerA: newPlayerA,
+      playerB: newPlayerB,
+      currentPick: newCurrentPick,
+      softRanks: newSoftRanks,
+      consecutivePlayerPick: consecutivePlayerPick
+    }));
+
+    // setDefaultRanks(newRanks);
+    // setPlayerA(newPlayerA);
+    // setPlayerB(newPlayerB);
+    // setCurrentPick(newCurrentPick);
+    // setSoftRanks(newSoftRanks);
 
     // if randomPlayer is found and satisfies criteria above, then setPlayerB to random player
     // // if no random player was found that hasn't been compared with playerA, check if gameOver (then gameOver)
@@ -439,7 +495,7 @@ const AppContainer = () => {
   }
 
   const checkComparisonAlreadyExists = (p1, p2) => {
-    console.log(p1, p2);
+    // console.log(p1, p2);
     //if the p2 is in the p1's playersAhead or playersBehind, the comparison has been made
     const playerBehind = p1.playersBehind.filter((p) => p === p2.name);
     if (playerBehind[0]) {
@@ -458,7 +514,6 @@ const AppContainer = () => {
     if (playerAhead2[0]) {
       return true;
     }
-
     return false;
   };
 
@@ -478,7 +533,7 @@ const AppContainer = () => {
       }
 
       comparedStop += 1;
-    } while (comparedStop < possibleComparisons * 3);
+    } while (comparedStop < gameState.possibleComparisons * 3);
     if (!comparisonFound) {
       return [];
     }
@@ -517,24 +572,42 @@ const AppContainer = () => {
           Options
         </StyledOptionsButton>
       </StyledButtonContainer>
-      {gameOver ? (
-        <StyledGameOverContainer>
-          <StyledGameOver>
-            Your Personal Top {numberTopPlayers} {currentPosition} Rankings:
-          </StyledGameOver>
-        </StyledGameOverContainer>
-      ) : (
+
+      {gameState.gameOver ? (
         <>
-          {playerA && playerB ? (
-            <PlayerComparison
-              playerA={playerA}
-              playerB={playerB}
-              advanceNextPick={advanceNextPick}
-            />
-          ) : null}
+          <StyledGameOverContainer>
+            <StyledGameOver>
+              Your Personal Top {numberTopPlayers} {currentPosition} Rankings:
+            </StyledGameOver>
+          </StyledGameOverContainer>
+          <PaperList
+            softRanks={gameState.softRanks}
+            position={currentPosition}
+          />
         </>
+      ) : (
+        <GameListContainer>
+          {gameState.isLoading ? (
+            <Loading />
+          ) : (
+            <PlayerComparisonContainer>
+              {gameState.playerA && gameState.playerB ? (
+                <PlayerComparison
+                  playerA={gameState.playerA}
+                  playerB={gameState.playerB}
+                  advanceNextPick={advanceNextPick}
+                  setGameState={setGameState}
+                />
+              ) : null}
+            </PlayerComparisonContainer>
+          )}
+
+          <PaperList
+            softRanks={gameState.softRanks}
+            position={currentPosition}
+          />
+        </GameListContainer>
       )}
-      <PaperList softRanks={softRanks} />
 
       <Modal
         title="Options"
@@ -542,7 +615,7 @@ const AppContainer = () => {
         onOk={handleOk}
         onCancel={handleCancel}
       >
-        <Form initialValues={{ numberTopPlayers: 10, position: "RB" }}>
+        <Form initialValues={{ numberTopPlayers: 15, position: "RB" }}>
           <StyledRow>
             <Col span={24} offset={1}>
               <StyledFormItem

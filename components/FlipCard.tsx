@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Col } from "antd";
+import { useSpring, animated } from "react-spring";
+
 
 const StyledName = styled.h2`
   ${({ theme }) => `
@@ -376,12 +378,14 @@ const StyledWrapper = styled(Col)`
 `;
 
 const FlipCard = ({ player, otherPlayer, advanceNextPick }) => {
+
   if (!player) {
     return null;
   }
   const handleAdvanceNextPick = () => {
     advanceNextPick(player, otherPlayer);
   };
+
   return (
     <StyledWrapper span={11}>
       <div className="wrapper">
@@ -416,12 +420,12 @@ const FlipCard = ({ player, otherPlayer, advanceNextPick }) => {
                   <h4>{player.name}</h4>
                   <h5>Consensus Rank: {player.rank}</h5>
                   {/* <label
-                    htmlFor={`card${player.rank}`}
-                    className="button return"
-                    aria-hidden="true"
-                  >
-                    <i className="fas fa-arrow-left"></i>
-                  </label> */}
+              htmlFor={`card${player.rank}`}
+              className="button return"
+              aria-hidden="true"
+            >
+              <i className="fas fa-arrow-left"></i>
+            </label> */}
                 </div>
               </div>
             </div>
