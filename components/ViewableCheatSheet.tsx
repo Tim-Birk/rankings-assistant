@@ -14,6 +14,10 @@ const StyledCheatSheetContainer = styled.div`
     -webkit-box-shadow: 3px 3px 5px 2px rgba(0,0,0,0.64);
     -moz-box-shadow: 3px 3px 5px 2px rgba(0,0,0,0.64);
     box-shadow: 3px 3px 5px 2px rgba(0,0,0,0.64);
+    
+    @media ${theme.device.tablet} { 
+     
+    }
    
   `}
 `;

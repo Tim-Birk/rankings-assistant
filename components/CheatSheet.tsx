@@ -37,12 +37,12 @@ const CheatSheet = ({ qbRanks, rbRanks, wrRanks, teRanks }) => {
           teRanks={teRanks}
         />
       </div>
-      <ViewableCheatSheet
+      {/* <ViewableCheatSheet
         qbRanks={qbRanks}
         rbRanks={rbRanks}
         wrRanks={wrRanks}
         teRanks={teRanks}
-      />
+      /> */}
     </div>
   );
 };
