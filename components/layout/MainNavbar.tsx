@@ -35,12 +35,12 @@ const Title = styled.div`
       h2 {
           display: inline;
           color: inherit;
-          font-size: 1.25em;
+          font-size: 0.75em;
           @media ${theme.device.tabletS} { 
-            font-size: 1.5em;
+            font-size: 1em;
           }
           @media ${theme.device.tablet} { 
-            font-size: 1.75em;
+            font-size: 1.5em;
           }
       }
       img {
@@ -77,7 +77,7 @@ const StyledMenu = styled(Menu)`
   justify-content: flex-end;
   @media (max-width: 890px) {
     width: 100%;
-    justify-content: center;
+    justify-content: flex-start;
   }
 `;
 

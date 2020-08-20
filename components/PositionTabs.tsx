@@ -85,16 +85,8 @@ const PositionTabs = () => {
   });
 
   return (
-    <StyledTabs defaultActiveKey="2" onChange={callback}>
-      <StyledTabPane tab="QB" key="1">
-        <PositionContainer
-          position="QB"
-          gameState={gameStateQB}
-          setGameState={setGameStateQB}
-          defaultNumberPlayers={15}
-        />
-      </StyledTabPane>
-      <StyledTabPane tab="RB" key="2">
+    <StyledTabs defaultActiveKey="1" onChange={callback}>
+      <StyledTabPane tab="RB" key="1">
         <PositionContainer
           position="RB"
           gameState={gameStateRB}
@@ -102,12 +94,20 @@ const PositionTabs = () => {
           defaultNumberPlayers={40}
         />
       </StyledTabPane>
-      <StyledTabPane tab="WR" key="3">
+      <StyledTabPane tab="WR" key="2">
         <PositionContainer
           position="WR"
           gameState={gameStateWR}
           setGameState={setGameStateWR}
           defaultNumberPlayers={40}
+        />
+      </StyledTabPane>
+      <StyledTabPane tab="QB" key="3">
+        <PositionContainer
+          position="QB"
+          gameState={gameStateQB}
+          setGameState={setGameStateQB}
+          defaultNumberPlayers={15}
         />
       </StyledTabPane>
       <StyledTabPane tab="TE" key="4">

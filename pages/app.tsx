@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { MainLayout } from "../components/layout/MainLayout";
-import Landing from "../components/landing/Landing"
+import PositionTabs from "../components/PositionTabs";
+
 
 const StyledHeader = styled.h1`
   ${({ theme }) => `
@@ -13,7 +14,7 @@ const StyledHeader = styled.h1`
 const Index = () => {
   return (
     <MainLayout title="Fantasy Football Personal Rankings Assistant">
-      <Landing />
+      <PositionTabs />
     </MainLayout>
   );
 };
