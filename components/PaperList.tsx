@@ -20,9 +20,15 @@ const StyledPaper = styled.div`
     overflow: scroll;   
     max-height: 300px;
     min-width: 250px;
-    @media ${theme.device.mobileL} { 
-      max-height: none;
+    @media ${theme.device.laptop} { 
+      max-height: 550px;
       overflow: auto; 
+      padding: 1.2em 1em 2em 1.75em;
+      grid-column: 1;
+      grid-row: 1;
+      width: 100%;
+      max-width: 600px;
+      margin-left: 0
     }
     margin: 1em auto 0;
 

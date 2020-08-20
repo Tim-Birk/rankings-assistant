@@ -8,11 +8,15 @@ const TitleContainer = styled.div`
   ${({ theme }) => `
         background-color: rgba(5, 5, 5, 0.8);
         color: rgba(255, 255, 255, 0.90);
-        width: 50%;
+        width: 100%;
         display: flex;
         align-items: center;
+        
+        @media ${theme.device.tablet} { 
+       
+        }
 
-        @media (max-width: 890px){
+        @media (max-width: 400px){
             visibility: hidden;
             width: 0;
         }
@@ -31,12 +35,26 @@ const Title = styled.div`
       h2 {
           display: inline;
           color: inherit;
+          font-size: 1.25em;
+          @media ${theme.device.tabletS} { 
+            font-size: 1.5em;
+          }
+          @media ${theme.device.tablet} { 
+            font-size: 1.75em;
+          }
       }
       img {
-          width: 64px;
+        width: 42px;
+          @media ${theme.device.tablet} { 
+            width: 52px;
+          }
       }
       p {
         line-height: 0;
+        display: none;
+        @media ${theme.device.laptop} { 
+          display: block;
+        }
       }
   `}
 `;
@@ -46,6 +64,7 @@ const StyledHeader = styled(Header)`
         border-bottom-color: ${theme["header-border-color"]};
         text-align: right;
         display: flex;
+        padding: 0 15px;
         li {
             font-size: ${theme["font-size-md"]};
         }
@@ -53,7 +72,7 @@ const StyledHeader = styled(Header)`
 `;
 const StyledMenu = styled(Menu)`
   border-bottom-width: 0px;
-  width: 50%;
+  width: 30%;
   display: flex;
   justify-content: flex-end;
   @media (max-width: 890px) {
@@ -75,7 +94,7 @@ export const MainNavbar = () => {
             <Title>
               <img src="/logo.svg" alt="Rankings Assistant Logo" />
               <div>
-                <h2>Rankings Assistant</h2>
+                <h2>Fantasy Rankings Assistant</h2>
                 <p>Your personal fantasy football rankings assistant</p>
               </div>
             </Title>

@@ -14,7 +14,7 @@ const StyledNameContainer = styled.div`
     padding: 4px 6px;
     width: 100%;
     height: 40px;
-    @media ${theme.device.mobileL} { 
+    @media ${theme.device.laptop} { 
         height: 50px;
     }
 
@@ -31,7 +31,7 @@ const StyledName = styled.h2`
   ${({ theme }) => `
     color: #FFF;
     font-size: 0.9em;
-    @media ${theme.device.mobileL} { 
+    @media ${theme.device.laptop} { 
         font-size: 1.1em;
     }
 
@@ -43,7 +43,7 @@ const AnimatedDiv = styled(a.div)`
     width: 115px;
     height: 125px;
 
-    @media ${theme.device.mobileL} { 
+    @media ${theme.device.laptop} { 
         width: 170px;
         height: 180px;
     }
@@ -71,7 +71,7 @@ const AnimatedDiv = styled(a.div)`
             grid-column-gap: 0.8em;
             justify-items: center;
         }
-        @media ${theme.device.mobileL} { 
+        @media ${theme.device.laptop} { 
             width: 170px;
             height: 230px;
         }
@@ -84,7 +84,7 @@ const CardContainer = styled.div`
     width: 115px;
     height: 125px;
 
-    @media ${theme.device.mobileL} { 
+    @media ${theme.device.laptop} { 
         width: 170px;
         height: 180px;
     }
@@ -96,7 +96,7 @@ const BackName = styled.h4`
   ${({ theme }) => `
     color: inherit;
 
-    @media ${theme.device.mobileL} { 
+    @media ${theme.device.laptop} { 
         font-size: 1.25em;
     }
 
@@ -121,7 +121,7 @@ const PickButton = styled.a`
   transition: 0.3s ease-in-out;
   text-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
   margin-top: 3em;
-  user-select: none
+  user-select: none;
   
   &.return {
     line-height: 3em;
@@ -135,7 +135,7 @@ const PickButton = styled.a`
     }
   }
 
-    @media ${theme.device.mobileL} { 
+    @media ${theme.device.laptop} { 
         margin-top: 4em;
         font-size: 1.5em;
     }
@@ -147,7 +147,7 @@ const BackInfo = styled.h5`
   ${({ theme }) => `
    color: inherit;
    
-    @media ${theme.device.mobileL} { 
+    @media ${theme.device.laptop} { 
         font-size: 1em;
     }
 
@@ -158,7 +158,7 @@ const BackRank = styled.h6`
   ${({ theme }) => `
    color: inherit;
    
-    @media ${theme.device.mobileL} { 
+    @media ${theme.device.laptop} { 
         font-size: 1em;
     }
 
@@ -173,7 +173,7 @@ const CardPickContainer = styled.div`
     
    width: 115px;
    height: 200px;
-   @media ${theme.device.mobileL} { 
+   @media ${theme.device.laptop} { 
         width: 170px;
         height: 270px;
     }

@@ -26,6 +26,13 @@ export const GlobalStyle = createGlobalStyle`
         }
         body {
             background: url(https://i.pinimg.com/originals/3b/1a/66/3b1a6603b7e1e5b6c16e9f998ffb0e91.jpg);
+            background-repeat: no-repeat;
+            background-color: rgba(0,0,0,0.95);
+            
+            height: 100vh;
+            @media ${theme.device.mobileL} { 
+                background-size: cover;
+            }
         }
     `}
 `;

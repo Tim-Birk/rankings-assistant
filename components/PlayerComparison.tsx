@@ -9,7 +9,10 @@ const StyledPlayerCardsContainer = styled(Row)`
       justify-content: center;
       align-items: center;
       margin-top: ${theme["margin-small"]};
-      width: 505px
+     
+      @media ${theme.device.laptop} { 
+        width: 505px
+    }
     `}
 `;
 

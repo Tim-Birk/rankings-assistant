@@ -13,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@ant-design/icons": "^4.2.2",
     "@apollo/react-hooks": "^4.0.0",
     "@apollo/react-ssr": "^4.0.0",
     "@auth0/nextjs-auth0": "^0.15.0",
@@ -32,6 +33,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-spring": "^8.0.27",
+    "react-to-print": "^2.9.0",
     "styled-components": "^5.1.1"
   },
   "devDependencies": {

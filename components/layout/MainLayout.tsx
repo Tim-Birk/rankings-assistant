@@ -5,7 +5,8 @@ import { GlobalStyle } from "../../utils/globalStyle";
 import MainHead from "../layout/MainHead";
 import { Layout } from "antd";
 import { MainFooter } from "./MainFooter";
-import { MainNavbar } from "./MainNavbar";
+import { MainNavbar } from "./MainNavbar"; 
+import styled from "styled-components"
 
 const { Content } = Layout;
 
@@ -14,6 +15,11 @@ type Props = {
   title?: string;
 };
 
+const StyledLayout = styled(Layout)`
+  background-color: transparent;
+  
+`
+
 export class MainLayout extends Component<Props> {
   render() {
     const { title, children } = this.props;
@@ -21,10 +27,10 @@ export class MainLayout extends Component<Props> {
       <ThemeProvider theme={theme}>
         <MainHead title={title} />
         <GlobalStyle />
-        <Layout>
+        <StyledLayout>
           <MainNavbar />
           <Content>{children}</Content>
-        </Layout>
+        </StyledLayout>
       </ThemeProvider>
     );
   }

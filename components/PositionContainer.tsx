@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Players from "../utils/players";
-import { Form, Row, Col, Select, Input, Button } from "antd";
+import { Form, Row, Col, Select, Input } from "antd";
 import styled from "styled-components";
 import PlayerComparison from "./PlayerComparison";
 import { permutations } from "mathjs";
@@ -11,13 +11,20 @@ import { Loading } from "./notify/Loading";
 const { Option } = Select;
 
 const StyledAppWrapper = styled.div`
-  background: url(https://i.pinimg.com/originals/3b/1a/66/3b1a6603b7e1e5b6c16e9f998ffb0e91.jpg);
+${({ theme }) => `
+  // background: url(https://i.pinimg.com/originals/3b/1a/66/3b1a6603b7e1e5b6c16e9f998ffb0e91.jpg);
+  background: transparent;
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+    @media ${theme.device.laptop} { 
+      align-items: flex-start;
+    }
+ `}
 `;
 const StyledInput = styled(Input)`
   ${({ theme }) => `
@@ -37,7 +44,7 @@ const StyledButtonContainer = styled(Row)`
        width: 170px;
        display: flex;
        justify-content: space-between;
-       margin-top: 1em;
+       
     `}
 `;
 const StyledFormItem = styled(Form.Item)`
@@ -95,6 +102,9 @@ const StyledOptionsButton = styled.button`
 const StyledGameOver = styled.h3`
   ${({ theme }) => `
        color: #FFF;
+       margin-top: 1em;
+       margin-bottom: 0;
+       text-shadow: 0px 1px 7px rgba(99,99,99,1);
     `}
 `;
 
@@ -116,10 +126,10 @@ const StyledGameOverContainer = styled.div`
 const GameListContainer = styled.div`
   ${({ theme }) => `
 
-    @media ${theme.device.mobileL} { 
+    @media ${theme.device.laptop} { 
         display: grid;
         grid-template-columns:  3fr 1fr;
-        max-width: 1000px;
+        max-width: 900px;
     }
 
   `}
@@ -129,31 +139,32 @@ const PlayerComparisonContainer = styled.div`
   ${({ theme }) => `
     
 
-    @media ${theme.device.mobileL} { 
+    @media ${theme.device.laptop} { 
         display: flex;
         flex-direction: column;
         align-items: flex-end;
+        grid-column: 2;
     }
 
   `}
 `;
 
-const AppContainer = () => {
-  const [numberTopPlayers, setNumberTopPlayers] = useState(15);
-  const [currentPosition, setCurrentPosition] = useState("RB");
+const PositionContainer = ({ position, gameState, setGameState, defaultNumberPlayers }) => {
+  const [numberTopPlayers, setNumberTopPlayers] = useState(defaultNumberPlayers);
+  // const [currentPosition, setCurrentPosition] = useState("RB");
   const [visible, setVisible] = useState(false);
 
-  const [gameState, setGameState] = useState({
-    defaultRanks: [],
-    currentPick: 1,
-    playerA: null,
-    playerB: null,
-    softRanks: [],
-    possibleComparisons: permutations(25, 2),
-    gameOver: false,
-    isLoading: false,
-    consecutivePlayerPick: 1,
-  });
+  // const [gameState, setGameState] = useState({
+  //   defaultRanks: [],
+  //   currentPick: 1,
+  //   playerA: null,
+  //   playerB: null,
+  //   softRanks: [],
+  //   possibleComparisons: permutations(25, 2),
+  //   gameOver: false,
+  //   isLoading: false,
+  //   consecutivePlayerPick: 1,
+  // });
 
   const showModal = () => {
     setVisible(true);
@@ -171,7 +182,7 @@ const AppContainer = () => {
   const startNew = () => {
     let startRanks = [];
 
-    if (currentPosition === "RB") {
+    if (position === "RB") {
       const { runningBacks } = Players;
 
       runningBacks.forEach((pos) => {
@@ -179,21 +190,21 @@ const AppContainer = () => {
           startRanks.push({ ...pos, playersBehind: [], playersAhead: [] });
         }
       });
-    } else if (currentPosition === "WR") {
+    } else if (position === "WR") {
       const { wideReceivers } = Players;
       wideReceivers.forEach((pos) => {
         if (pos.rank <= numberTopPlayers) {
           startRanks.push({ ...pos, playersBehind: [], playersAhead: [] });
         }
       });
-    } else if (currentPosition === "TE") {
+    } else if (position === "TE") {
       const { tightEnds } = Players;
       tightEnds.forEach((pos) => {
         if (pos.rank <= numberTopPlayers) {
           startRanks.push({ ...pos, playersBehind: [], playersAhead: [] });
         }
       });
-    } else if (currentPosition === "QB") {
+    } else if (position === "QB") {
       const { quarterBacks } = Players;
       quarterBacks.forEach((pos) => {
         if (pos.rank <= numberTopPlayers) {
@@ -201,7 +212,7 @@ const AppContainer = () => {
         }
       });
     }
-
+// ToDO move game state to outer container to make cheat sheet?
     setGameState({
       gameOver: false,
       possibleComparisons: permutations(numberTopPlayers, 2),
@@ -431,7 +442,7 @@ const AppContainer = () => {
 
     if (consecutivePlayerPick >= 3) {
       // reset Pick
-      consecutivePlayerPick = 1
+      consecutivePlayerPick = 1;
     }
     // Set newState
     setGameState((st) => ({
@@ -441,7 +452,7 @@ const AppContainer = () => {
       playerB: newPlayerB,
       currentPick: newCurrentPick,
       softRanks: newSoftRanks,
-      consecutivePlayerPick: consecutivePlayerPick
+      consecutivePlayerPick: consecutivePlayerPick,
     }));
 
     // setDefaultRanks(newRanks);
@@ -562,79 +573,71 @@ const AppContainer = () => {
   };
 
   return (
-    <StyledAppWrapper>
+    <>
       <StyledButtonContainer>
         <StyledNewButton type="primary" onClick={() => startNew()}>
           New
         </StyledNewButton>
 
         <StyledOptionsButton type="primary" onClick={() => showModal()}>
-          Options
+          Settings
         </StyledOptionsButton>
       </StyledButtonContainer>
-
-      {gameState.gameOver ? (
-        <>
-          <StyledGameOverContainer>
+      <StyledAppWrapper>
+        {gameState.gameOver ? (
+          <>
             <StyledGameOver>
-              Your Personal Top {numberTopPlayers} {currentPosition} Rankings:
-            </StyledGameOver>
-          </StyledGameOverContainer>
-          <PaperList
-            softRanks={gameState.softRanks}
-            position={currentPosition}
-          />
-        </>
-      ) : (
-        <GameListContainer>
-          {gameState.isLoading ? (
-            <Loading />
-          ) : (
-            <PlayerComparisonContainer>
-              {gameState.playerA && gameState.playerB ? (
-                <PlayerComparison
-                  playerA={gameState.playerA}
-                  playerB={gameState.playerB}
-                  advanceNextPick={advanceNextPick}
-                  setGameState={setGameState}
-                />
-              ) : null}
-            </PlayerComparisonContainer>
-          )}
+                Your Personal Top {numberTopPlayers} {position} Rankings:
+              </StyledGameOver>
+            <PaperList softRanks={gameState.softRanks} position={position} />
+          </>
+        ) : (
+          <GameListContainer>
+            {gameState.isLoading ? (
+              <Loading />
+            ) : (
+              <PlayerComparisonContainer>
+                {gameState.playerA && gameState.playerB ? (
+                  <PlayerComparison
+                    playerA={gameState.playerA}
+                    playerB={gameState.playerB}
+                    advanceNextPick={advanceNextPick}
+                    setGameState={setGameState}
+                  />
+                ) : null}
+              </PlayerComparisonContainer>
+            )}
 
-          <PaperList
-            softRanks={gameState.softRanks}
-            position={currentPosition}
-          />
-        </GameListContainer>
-      )}
+            <PaperList softRanks={gameState.softRanks} position={position} />
+          </GameListContainer>
+        )}
 
-      <Modal
-        title="Options"
-        visible={visible}
-        onOk={handleOk}
-        onCancel={handleCancel}
-      >
-        <Form initialValues={{ numberTopPlayers: 15, position: "RB" }}>
-          <StyledRow>
-            <Col span={24} offset={1}>
-              <StyledFormItem
-                label="Top Players at Position"
-                name="numberTopPlayers"
-              >
-                <StyledInput
-                  value={numberTopPlayers}
-                  onChange={(e) => setNumberTopPlayers(e.target.value)}
-                  type="number"
-                  required
-                />
-              </StyledFormItem>
-            </Col>
-            <Col span={24} offset={1}>
+        <Modal
+          title="Options"
+          visible={visible}
+          onOk={handleOk}
+          onCancel={handleCancel}
+        >
+          <Form initialValues={{ numberTopPlayers: defaultNumberPlayers, position: "RB" }}>
+            <StyledRow>
+              <Col span={24} offset={1}>
+                <StyledFormItem
+                  label="Top Players at Position"
+                  name="numberTopPlayers"
+                >
+                  <StyledInput
+                    value={numberTopPlayers}
+                    onChange={(e) => setNumberTopPlayers(e.target.value)}
+                    type="number"
+                    required
+                  />
+                </StyledFormItem>
+              </Col>
+              {/* <Col span={24} offset={1}>
               <Form.Item label="Position" name="position">
                 <StyledSelect
                   placeholder="Position"
-                  value={currentPosition}
+                  value={position}
                   onChange={(value) => setCurrentPosition(value)}
                 >
                   <Option key="QB" value={"QB"}>
@@ -651,12 +654,13 @@ const AppContainer = () => {
                   </Option>
                 </StyledSelect>
               </Form.Item>
-            </Col>
-          </StyledRow>
-        </Form>
-      </Modal>
-    </StyledAppWrapper>
+            </Col> */}
+            </StyledRow>
+          </Form>
+        </Modal>
+      </StyledAppWrapper>
+    </>
   );
 };
 
-export default AppContainer;
+export default PositionContainer;
