@@ -30,7 +30,14 @@ const Title = styled.div`
       line-height: 50px;
       div {
           width: 100%;
-          padding-left: ${theme["padding-small"]};
+          padding-left: 8px;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: center;
+          @media ${theme.device.tabletS} { 
+            padding-left: ${theme["padding-small"]};
+          }
       }
       h2 {
           display: inline;
@@ -52,7 +59,7 @@ const Title = styled.div`
       p {
         line-height: 0;
         display: none;
-        @media ${theme.device.laptop} { 
+        @media ${theme.device.tablet} { 
           display: block;
         }
       }
@@ -75,7 +82,7 @@ const StyledMenu = styled(Menu)`
   width: 30%;
   display: flex;
   justify-content: flex-end;
-  @media (max-width: 890px) {
+  @media (max-width: 410px) {
     width: 100%;
     justify-content: flex-start;
   }

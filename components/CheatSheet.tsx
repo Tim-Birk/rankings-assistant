@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { useReactToPrint } from "react-to-print";
 import styled from "styled-components";
 import { PrinterFilled } from "@ant-design/icons";
@@ -18,6 +18,11 @@ const StyledPrintButton = styled.span`
 
 const CheatSheet = ({ qbRanks, rbRanks, wrRanks, teRanks }) => {
   const componentRef = useRef();
+
+  useEffect(() => {
+    console.log(componentRef.current);
+  }, [componentRef]);
+
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
   });
@@ -37,12 +42,12 @@ const CheatSheet = ({ qbRanks, rbRanks, wrRanks, teRanks }) => {
           teRanks={teRanks}
         />
       </div>
-      {/* <ViewableCheatSheet
+      <ViewableCheatSheet
         qbRanks={qbRanks}
         rbRanks={rbRanks}
         wrRanks={wrRanks}
         teRanks={teRanks}
-      /> */}
+      />
     </div>
   );
 };
