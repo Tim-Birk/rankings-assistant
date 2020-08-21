@@ -293,7 +293,7 @@ const PositionContainer = ({
   };
 
   const getPlayersBehindPlayer = (currentPlayer) => {
-     // All players behind current player
+    // All players behind current player
     //// Players currently behind the player
     //// Players behind the players above
 
@@ -304,7 +304,6 @@ const PositionContainer = ({
     // define the final list of players we want
     let allPlayersBehindPlayer = [];
     playerBehind.playersAhead.forEach((pb) => allPlayersBehindPlayer.push(pb));
-
 
     // for each one of those players that has a player ahead of them (and players ahead of them, and so on...) - add those players to the list
     // iterate only once through the entire ranks to determine if the iterated player fits the criteria above
@@ -326,7 +325,7 @@ const PositionContainer = ({
         }
       });
     });
-    
+
     return allPlayersBehindPlayer;
   };
 
@@ -385,7 +384,7 @@ const PositionContainer = ({
         }
       });
     });
-    
+
     return allPlayersAheadOfPlayer;
   };
 
@@ -702,7 +701,11 @@ const PositionContainer = ({
             <StyledGameOver>
               Your Personal Top {numberTopPlayers} {position} Rankings:
             </StyledGameOver>
-            <PaperList softRanks={gameState.softRanks} position={position} />
+            <PaperList
+              softRanks={gameState.softRanks}
+              position={position}
+              inProgress={!gameState.gameOver}
+            />
           </>
         ) : (
           <GameListContainer>
@@ -721,7 +724,11 @@ const PositionContainer = ({
               </PlayerComparisonContainer>
             )}
 
-            <PaperList softRanks={gameState.softRanks} position={position} />
+            <PaperList
+              softRanks={gameState.softRanks}
+              position={position}
+              inProgress={!gameState.gameOver}
+            />
           </GameListContainer>
         )}
 

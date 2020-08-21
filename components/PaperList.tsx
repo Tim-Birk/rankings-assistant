@@ -35,14 +35,14 @@ const StyledPaper = styled.div`
  `}
 `;
 
-const PaperList = ({ softRanks, position }) => {
+const PaperList = ({ softRanks, position, inProgress }) => {
   // if ((softRanks.length === 0)) {
   //   return null;
   // }
   return (
     <StyledPaper>
       <h4 style={{ textDecoration: "underline", textAlign: "left" }}>
-        Your {position} Rankings
+        {position} Rankings {inProgress ? "(In Progress)" : "(Final)"}
       </h4>
       <ol>
         {softRanks.map((sr) => (
