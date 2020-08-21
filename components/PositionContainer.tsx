@@ -11,7 +11,7 @@ import { Loading } from "./notify/Loading";
 const { Option } = Select;
 
 const StyledAppWrapper = styled.div`
-${({ theme }) => `
+  ${({ theme }) => `
   // background: url(https://i.pinimg.com/originals/3b/1a/66/3b1a6603b7e1e5b6c16e9f998ffb0e91.jpg);
   background: transparent;
   background-repeat: no-repeat;
@@ -149,13 +149,20 @@ const PlayerComparisonContainer = styled.div`
   `}
 `;
 
-const PositionContainer = ({ position, gameState, setGameState, defaultNumberPlayers }) => {
-  const [numberTopPlayers, setNumberTopPlayers] = useState(defaultNumberPlayers);
+const PositionContainer = ({
+  position,
+  gameState,
+  setGameState,
+  defaultNumberPlayers,
+}) => {
+  const [numberTopPlayers, setNumberTopPlayers] = useState(
+    defaultNumberPlayers
+  );
   // const [currentPosition, setCurrentPosition] = useState("RB");
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    startNew()
+    startNew();
   }, []);
 
   // const [gameState, setGameState] = useState({
@@ -191,32 +198,56 @@ const PositionContainer = ({ position, gameState, setGameState, defaultNumberPla
 
       runningBacks.forEach((pos) => {
         if (pos.rank <= numberTopPlayers) {
-          startRanks.push({ ...pos, playersBehind: [], playersAhead: [] });
+          let playersAhead = [];
+          runningBacks.forEach((p) => {
+            if (p.rank <= numberTopPlayers && p.rank - pos.rank > 10) {
+              playersAhead.push(p.name);
+            }
+          });
+          startRanks.push({ ...pos, playersBehind: [], playersAhead });
         }
       });
     } else if (position === "WR") {
       const { wideReceivers } = Players;
       wideReceivers.forEach((pos) => {
         if (pos.rank <= numberTopPlayers) {
-          startRanks.push({ ...pos, playersBehind: [], playersAhead: [] });
+          let playersAhead = [];
+          wideReceivers.forEach((p) => {
+            if (p.rank <= numberTopPlayers && p.rank - pos.rank > 10) {
+              playersAhead.push(p.name);
+            }
+          });
+          startRanks.push({ ...pos, playersBehind: [], playersAhead });
         }
       });
     } else if (position === "TE") {
       const { tightEnds } = Players;
       tightEnds.forEach((pos) => {
         if (pos.rank <= numberTopPlayers) {
-          startRanks.push({ ...pos, playersBehind: [], playersAhead: [] });
+          let playersAhead = [];
+          tightEnds.forEach((p) => {
+            if (p.rank <= numberTopPlayers && p.rank - pos.rank > 10) {
+              playersAhead.push(p.name);
+            }
+          });
+          startRanks.push({ ...pos, playersBehind: [], playersAhead });
         }
       });
     } else if (position === "QB") {
       const { quarterBacks } = Players;
       quarterBacks.forEach((pos) => {
         if (pos.rank <= numberTopPlayers) {
-          startRanks.push({ ...pos, playersBehind: [], playersAhead: [] });
+          let playersAhead = [];
+          quarterBacks.forEach((p) => {
+            if (p.rank <= numberTopPlayers && p.rank - pos.rank > 10) {
+              playersAhead.push(p.name);
+            }
+          });
+          startRanks.push({ ...pos, playersBehind: [], playersAhead });
         }
       });
     }
-// ToDO move game state to outer container to make cheat sheet?
+    // ToDO move game state to outer container to make cheat sheet?
     setGameState({
       gameOver: false,
       possibleComparisons: permutations(numberTopPlayers, 2),
@@ -241,11 +272,12 @@ const PositionContainer = ({ position, gameState, setGameState, defaultNumberPla
     return self.indexOf(value) === index;
   }
 
-  const getPlayersBehindPlayer = (currentPlayer) => {
+  const getPlayersBehindPlayer2 = (currentPlayer) => {
     // All players behind current player
     //// Players currently behind the player
     //// Players behind the players above
     const playerBehind = getPlayerByName(gameState.defaultRanks, currentPlayer);
+    console.log(currentPlayer, playerBehind);
     let allPlayersBehindPlayer = [];
     playerBehind.playersAhead.forEach((pb) => allPlayersBehindPlayer.push(pb));
 
@@ -260,12 +292,51 @@ const PositionContainer = ({ position, gameState, setGameState, defaultNumberPla
     return allPlayersBehindPlayer;
   };
 
-  const getPlayersAheadOfPlayer = (currentPlayer) => {
+  const getPlayersBehindPlayer = (currentPlayer) => {
+     // All players behind current player
+    //// Players currently behind the player
+    //// Players behind the players above
+
+    // console.log(currentPlayer);
+
+    // Get the player object
+    const playerBehind = getPlayerByName(gameState.defaultRanks, currentPlayer);
+    // define the final list of players we want
+    let allPlayersBehindPlayer = [];
+    playerBehind.playersAhead.forEach((pb) => allPlayersBehindPlayer.push(pb));
+
+
+    // for each one of those players that has a player ahead of them (and players ahead of them, and so on...) - add those players to the list
+    // iterate only once through the entire ranks to determine if the iterated player fits the criteria above
+    gameState.defaultRanks.forEach((dr) => {
+      // For each already known player that is ahead of the current, add players ahead of them to the list
+      playerBehind.playersAhead.forEach((pb) => {
+        // the player is currently in the playersAhead to add that player
+        if (dr.name === pb) {
+          allPlayersBehindPlayer.push(dr.name);
+          // get players ahead of this player
+          const pbObj = getPlayerByName(gameState.defaultRanks, pb);
+          let otherPlayersAhead = [];
+          pbObj.playersAhead.forEach((opb) => {
+            otherPlayersAhead.push(opb);
+          });
+          allPlayersBehindPlayer = allPlayersBehindPlayer
+            .concat(otherPlayersAhead)
+            .filter(onlyUnique);
+        }
+      });
+    });
+    
+    return allPlayersBehindPlayer;
+  };
+
+  const getPlayersAheadOfPlayer2 = (currentPlayer) => {
     // All players ahead of current player
     //// Players currently ahead the player
     //// Players ahead the players above
 
     // console.log(currentPlayer);
+
     const playerAhead = getPlayerByName(gameState.defaultRanks, currentPlayer);
     let allPlayersAheadOfPlayer = [];
     playerAhead.playersBehind.forEach((pb) => allPlayersAheadOfPlayer.push(pb));
@@ -277,6 +348,44 @@ const PositionContainer = ({ position, gameState, setGameState, defaultNumberPla
         .filter(onlyUnique);
     });
 
+    return allPlayersAheadOfPlayer;
+  };
+
+  const getPlayersAheadOfPlayer = (currentPlayer) => {
+    // All players ahead of current player
+    //// Players currently ahead the player
+    //// Players ahead the players above
+
+    // console.log(currentPlayer);
+
+    // Get the player object
+    const playerAhead = getPlayerByName(gameState.defaultRanks, currentPlayer);
+    // define the final list of players we want
+    let allPlayersAheadOfPlayer = [];
+    // get the players currently ahead of the player
+    // playerAhead.playersBehind.forEach((pb) => allPlayersAheadOfPlayer.push(pb));
+
+    // for each one of those players that has a player ahead of them (and players ahead of them, and so on...) - add those players to the list
+    // iterate only once through the entire ranks to determine if the iterated player fits the criteria above
+    gameState.defaultRanks.forEach((dr) => {
+      // For each already known player that is ahead of the current, add players ahead of them to the list
+      playerAhead.playersBehind.forEach((pb) => {
+        // the player is currently in the playersAhead to add that player
+        if (dr.name === pb) {
+          allPlayersAheadOfPlayer.push(dr.name);
+          // get players ahead of this player
+          const pbObj = getPlayerByName(gameState.defaultRanks, pb);
+          let otherPlayersBehind = [];
+          pbObj.playersBehind.forEach((opb) => {
+            otherPlayersBehind.push(opb);
+          });
+          allPlayersAheadOfPlayer = allPlayersAheadOfPlayer
+            .concat(otherPlayersBehind)
+            .filter(onlyUnique);
+        }
+      });
+    });
+    
     return allPlayersAheadOfPlayer;
   };
 
@@ -591,8 +700,8 @@ const PositionContainer = ({ position, gameState, setGameState, defaultNumberPla
         {gameState.gameOver ? (
           <>
             <StyledGameOver>
-                Your Personal Top {numberTopPlayers} {position} Rankings:
-              </StyledGameOver>
+              Your Personal Top {numberTopPlayers} {position} Rankings:
+            </StyledGameOver>
             <PaperList softRanks={gameState.softRanks} position={position} />
           </>
         ) : (
@@ -622,7 +731,12 @@ const PositionContainer = ({ position, gameState, setGameState, defaultNumberPla
           onOk={handleOk}
           onCancel={handleCancel}
         >
-          <Form initialValues={{ numberTopPlayers: defaultNumberPlayers, position: "RB" }}>
+          <Form
+            initialValues={{
+              numberTopPlayers: defaultNumberPlayers,
+              position: "RB",
+            }}
+          >
             <StyledRow>
               <Col span={24} offset={1}>
                 <StyledFormItem

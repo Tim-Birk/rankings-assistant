@@ -6,13 +6,14 @@ const { Title, Paragraph, Text } = Typography;
 import styled from "styled-components";
 
 const LandingContainer = styled.div`
- ${({ theme }) => `
+  ${({ theme }) => `
     background: linear-gradient(-45deg, #003f2d, #64b6ac, #044389, #daffef);
     background-size: 400% 400%;
     animation: gradient 15s ease infinite;
     height: 100vh;
     color: #fff;
     padding-top: 4em;
+    
 
     @media ${theme.device.mobileM} { 
         padding-top: 6em;
@@ -33,7 +34,7 @@ const LandingContainer = styled.div`
         background-position: 0% 50%;
         }
     }
-  `}  
+  `}
 `;
 
 const SmallSlogan = styled(Title)`
@@ -118,6 +119,7 @@ const StyledButton = styled(Button)`
   ${({ theme }) => `
     width: 80px;
     height: 35px;
+    margin-bottom: 4em;
     @media ${theme.device.mobileL} { 
 
     }
@@ -127,11 +129,23 @@ const StyledButton = styled(Button)`
  `}
 `;
 
-
 const DescriptionSection = styled.section`
-${({ theme }) => `
+  ${({ theme }) => `
     background: #044389;
     height: 100%;
+    padding: ${theme["padding-medium"]};
+    @media ${theme.device.mobileL} { 
+
+    }
+    @media ${theme.device.tablet} { 
+        padding: ${theme["padding-large"]};
+    }           
+`}
+`;
+
+const DescriptionContent = styled(Paragraph)`
+  ${({ theme }) => `
+    color: #FFF !important;
     @media ${theme.device.mobileL} { 
 
     }
@@ -139,7 +153,7 @@ ${({ theme }) => `
 
     }           
 `}
-`
+`;
 
 const Landing = () => {
   return (
@@ -151,15 +165,41 @@ const Landing = () => {
         <Logo src="/logo.svg" alt="Rankings Assistant Logo" />
         <StyledTitle>Fantasy Football Rankings Assistant</StyledTitle>
         <Slogan level={4}>
-          Generate your own rankings cheat sheet based on player vs. player
-          comparisons.
+          Generate your own rankings cheat sheet based on player versus player
+          comparisons
         </Slogan>
         <Link href="/app">
           <StyledButton ghost>Start</StyledButton>
         </Link>
       </TitleContent>
       {/* <DescriptionSection>
-          <h1>Desccription Section</h1>
+        <DescriptionContent>
+          Draft day is here and you’re on the clock. You staring down the top
+          two players at the position from your favorite fantasy football
+          expert’s rankings and can’t decide who to take. The clock is ticking.
+          Both players have their upside and downside. You start considering the
+          full season outlook for each player and all the possible scenarios
+          that could lead to success or failure. Time is up. You just
+          auto-drafted a QB in the 4th round!
+        </DescriptionContent>
+        <DescriptionContent>
+          Have you ever found yourself in a similar situation? Fantasy drafts
+          are no time for making tough calls between two players from your
+          “trusted” rankings. It is one thing to consider how you want to build
+          out your team based on the current players you already drafted, but
+          deciding if Player A is better than Player B should be done
+          beforehand.
+        </DescriptionContent>
+        <DescriptionContent>
+          If you are someone who does not want to be a slave to someone else’s
+          rankings and likes to go into a draft feeling confident with your own,
+          the Fantasy Rankings Assistant is the perfect tool for you. It is more
+          than just dragging and dropping players around on a large list where
+          you can easily get swayed by the default rankings or find yourself
+          getting overwhelmed when trying to make decisions on multiple players
+          at once. The Fantasy Rankings Assistant generates rankings based on
+          you making side by side player comparisons.
+        </DescriptionContent>
       </DescriptionSection> */}
     </LandingContainer>
   );
