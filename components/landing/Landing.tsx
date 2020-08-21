@@ -6,24 +6,34 @@ const { Title, Paragraph, Text } = Typography;
 import styled from "styled-components";
 
 const LandingContainer = styled.div`
-  background: linear-gradient(-45deg, #003f2d, #64b6ac, #044389, #daffef);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
-  height: 100vh;
-  color: #fff;
-  padding-top: 4em;
+ ${({ theme }) => `
+    background: linear-gradient(-45deg, #003f2d, #64b6ac, #044389, #daffef);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    height: 100vh;
+    color: #fff;
+    padding-top: 4em;
 
-  @keyframes gradient {
-    0% {
-      background-position: 0% 50%;
+    @media ${theme.device.mobileM} { 
+        padding-top: 6em;
     }
-    50% {
-      background-position: 100% 50%;
+
+    @media ${theme.device.tablet} { 
+        padding-top: 10em;
     }
-    100% {
-      background-position: 0% 50%;
+
+    @keyframes gradient {
+        0% {
+        background-position: 0% 50%;
+        }
+        50% {
+        background-position: 100% 50%;
+        }
+        100% {
+        background-position: 0% 50%;
+        }
     }
-  }
+  `}  
 `;
 
 const SmallSlogan = styled(Title)`
@@ -72,6 +82,7 @@ const Slogan = styled(Title)`
     }
  `}
 `;
+
 const TitleContent = styled.div`
   ${({ theme }) => `
     display: flex;
@@ -103,19 +114,6 @@ const Logo = styled.img`
   `}
 `;
 
-const DescriptionSection = styled.section`
-${({ theme }) => `
-    background: #044389;
-    height: 100%;
-    @media ${theme.device.mobileL} { 
-
-    }
-    @media ${theme.device.tablet} { 
-
-    }           
-`}
-`
-
 const StyledButton = styled(Button)`
   ${({ theme }) => `
     width: 80px;
@@ -128,6 +126,20 @@ const StyledButton = styled(Button)`
     }
  `}
 `;
+
+
+const DescriptionSection = styled.section`
+${({ theme }) => `
+    background: #044389;
+    height: 100%;
+    @media ${theme.device.mobileL} { 
+
+    }
+    @media ${theme.device.tablet} { 
+
+    }           
+`}
+`
 
 const Landing = () => {
   return (

@@ -6,6 +6,7 @@ const StyledCheatSheetContainer = styled.div`
     background: #FFF;
     padding: 1.75em;
     font-size: 0.85em;
+    margin-top: 0.5em;
     margin-bottom: 1em;
     height: 100vh;
     width: 90vw;

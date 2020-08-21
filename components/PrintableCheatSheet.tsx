@@ -5,10 +5,14 @@ const StyledCheatSheetContainer = styled.div`
   ${({ theme }) => `
     background: #FFF;
     width: 8.5in;
-    height: 10.5in;
+    height: 10in;
     padding: 0.50in;
     font-size: 0.85em;
     margin-bottom: 1em;
+
+    @media ${theme.device.tabletS} { 
+    
+    }
   `}
 `;
 

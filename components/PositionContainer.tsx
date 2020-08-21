@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Players from "../utils/players";
 import { Form, Row, Col, Select, Input } from "antd";
 import styled from "styled-components";
@@ -153,6 +153,10 @@ const PositionContainer = ({ position, gameState, setGameState, defaultNumberPla
   const [numberTopPlayers, setNumberTopPlayers] = useState(defaultNumberPlayers);
   // const [currentPosition, setCurrentPosition] = useState("RB");
   const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    startNew()
+  }, []);
 
   // const [gameState, setGameState] = useState({
   //   defaultRanks: [],
