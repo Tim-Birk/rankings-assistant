@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { useSpring, animated as a } from "react-spring";
 import { Loading } from "./notify/Loading";
+import { Button } from "antd";
 
 const StyledNameContainer = styled.div`
   ${({ theme }) => `
@@ -103,7 +104,7 @@ const BackName = styled.h4`
   `}
 `;
 
-const PickButton = styled.a`
+const PickButton = styled(Button)`
   ${({ theme }) => `
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -112,21 +113,24 @@ const PickButton = styled.a`
   display: block;
   min-width: 3em;
   background-color: transparent;
-  border: none;
+  border: 1px solid #fff;
+  // font-size: 2em;
+  font-size: 1.25em;
   color: #fff;
   border-radius: 4px;
   text-align: center;
-  left: 50%;
+  // left: 50%;
   backface-visibility: hidden;
   transition: 0.3s ease-in-out;
   text-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
-  margin-top: 3em;
+  margin-top: 4em;
   user-select: none;
+  line-height: 1;
   
   &.return {
     line-height: 3em;
     color: ${theme["accent-color"]};
-    border-color: ${theme["accent-color"]};
+    // border-color: ${theme["accent-color"]};
     text-shadow: none;
     &:hover {
         background-color: ${theme["accent-color"]};
@@ -224,11 +228,7 @@ const Card = ({
               }}
             >
               <StyledPlayerImage
-                src={
-                  player.image
-                    ? player.image
-                    : "/blankPlayer.jpg"
-                }
+                src={player.image ? player.image : "/blankPlayer.jpg"}
               />
               <StyledNameContainer>
                 <StyledName>{player.name}</StyledName>
@@ -250,7 +250,7 @@ const Card = ({
               </div>
             </AnimatedDiv>
           </CardContainer>
-          <PickButton onClick={handleAdvanceNextPick}>Pick</PickButton>
+          <PickButton ghost onClick={handleAdvanceNextPick}>Pick</PickButton>
         </CardPickContainer>
       )}
     </>
