@@ -91,7 +91,7 @@ const PositionTabs = () => {
           position="RB"
           gameState={gameStateRB}
           setGameState={setGameStateRB}
-          defaultNumberPlayers={40}
+          defaultNumberPlayers={25}
         />
       </StyledTabPane>
       <StyledTabPane tab="WR" key="2">
@@ -99,7 +99,7 @@ const PositionTabs = () => {
           position="WR"
           gameState={gameStateWR}
           setGameState={setGameStateWR}
-          defaultNumberPlayers={40}
+          defaultNumberPlayers={25}
         />
       </StyledTabPane>
       <StyledTabPane tab="QB" key="3">
