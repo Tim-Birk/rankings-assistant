@@ -7,6 +7,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg18877.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 2,
@@ -16,6 +17,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg17923.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 3,
@@ -25,6 +27,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg19766.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 4,
@@ -34,6 +37,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg18872.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 5,
@@ -42,6 +46,7 @@ const runningBacks = [
     image: null,
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 6,
@@ -51,6 +56,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg18878.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 7,
@@ -60,6 +66,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg17959.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 8,
@@ -69,6 +76,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg20824.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 9,
@@ -78,6 +86,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg20933.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 10,
@@ -87,6 +96,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg18003.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 11,
@@ -96,6 +106,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg19045.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 12,
@@ -105,6 +116,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg18858.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 13,
@@ -114,6 +126,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg19798.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 14,
@@ -123,6 +136,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg19562.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 15,
@@ -132,6 +146,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg14967.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 16,
@@ -141,6 +156,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg16847.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 17,
@@ -150,6 +166,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg19119.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 18,
@@ -159,6 +176,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg16776.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 19,
@@ -168,6 +186,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg16771.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 20,
@@ -177,6 +196,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg18983.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 21,
@@ -186,6 +206,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg18803.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 22,
@@ -195,6 +216,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg20882.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 23,
@@ -204,6 +226,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg13337.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 24,
@@ -213,6 +236,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg20941.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 25,
@@ -222,6 +246,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg17217.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 26,
@@ -231,6 +256,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg19861.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 27,
@@ -239,6 +265,7 @@ const runningBacks = [
     image: null,
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 28,
@@ -248,6 +275,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg18944.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 29,
@@ -256,6 +284,7 @@ const runningBacks = [
     image: null,
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 30,
@@ -264,6 +293,7 @@ const runningBacks = [
     image: null,
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 31,
@@ -273,6 +303,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg18067.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 32,
@@ -282,6 +313,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg16834.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 33,
@@ -291,6 +323,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg16056.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 34,
@@ -299,6 +332,7 @@ const runningBacks = [
     image: null,
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 35,
@@ -308,6 +342,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg19822.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 36,
@@ -317,6 +352,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg20128.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 37,
@@ -326,6 +362,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg19828.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 38,
@@ -335,6 +372,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg19003.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 39,
@@ -344,6 +382,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg19319.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 40,
@@ -353,6 +392,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg15071.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 41,
@@ -361,6 +401,7 @@ const runningBacks = [
     image: null,
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 42,
@@ -370,6 +411,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg18998.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 43,
@@ -378,6 +420,7 @@ const runningBacks = [
     image: null,
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 44,
@@ -386,6 +429,7 @@ const runningBacks = [
     image: null,
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 45,
@@ -395,6 +439,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg4807.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 46,
@@ -404,6 +449,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg19912.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 47,
@@ -413,6 +459,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg16838.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 48,
@@ -422,6 +469,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg15102.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 49,
@@ -430,6 +478,7 @@ const runningBacks = [
     image: null,
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 50,
@@ -439,6 +488,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg20868.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 51,
@@ -448,6 +498,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg18995.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 52,
@@ -457,6 +508,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg19919.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 53,
@@ -466,6 +518,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg20912.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 54,
@@ -475,6 +528,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg20798.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 55,
@@ -484,6 +538,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg5820.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 56,
@@ -493,6 +548,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg20064.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 57,
@@ -502,6 +558,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg18690.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 58,
@@ -511,6 +568,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg20950.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 59,
@@ -520,6 +578,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg17053.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 60,
@@ -528,6 +587,7 @@ const runningBacks = [
     image: null,
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 61,
@@ -537,6 +597,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg14916.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 62,
@@ -545,6 +606,7 @@ const runningBacks = [
     image: null,
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 63,
@@ -553,6 +615,7 @@ const runningBacks = [
     image: null,
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 64,
@@ -561,6 +624,7 @@ const runningBacks = [
     image: null,
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 65,
@@ -570,6 +634,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg19799.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 66,
@@ -579,6 +644,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg19924.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 67,
@@ -588,6 +654,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg11932.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 68,
@@ -597,6 +664,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg16510.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 69,
@@ -605,6 +673,7 @@ const runningBacks = [
     image: null,
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 70,
@@ -613,6 +682,7 @@ const runningBacks = [
     image: null,
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 71,
@@ -622,6 +692,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg18375.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 72,
@@ -631,6 +702,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg16668.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 73,
@@ -639,6 +711,7 @@ const runningBacks = [
     image: null,
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 74,
@@ -648,6 +721,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg19033.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 75,
@@ -657,6 +731,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg20802.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 76,
@@ -665,6 +740,7 @@ const runningBacks = [
     image: null,
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 77,
@@ -674,6 +750,7 @@ const runningBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg18061.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 78,
@@ -682,6 +759,7 @@ const runningBacks = [
     image: null,
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 79,
@@ -690,6 +768,7 @@ const runningBacks = [
     image: null,
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 80,
@@ -698,6 +777,7 @@ const runningBacks = [
     image: null,
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
 ];
 
@@ -710,6 +790,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg17960.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 2,
@@ -719,6 +800,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg16470.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 3,
@@ -728,6 +810,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg13291.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 4,
@@ -737,6 +820,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg18082.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 5,
@@ -746,6 +830,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg18880.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 6,
@@ -755,6 +840,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg18977.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 7,
@@ -764,6 +850,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg16765.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 8,
@@ -773,6 +860,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg14986.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 9,
@@ -782,6 +870,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg19844.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 10,
@@ -791,6 +880,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg14871.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 11,
@@ -800,6 +890,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg15534.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 12,
@@ -809,6 +900,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg18882.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 13,
@@ -818,6 +910,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg16263.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 14,
@@ -827,6 +920,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg16597.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 15,
@@ -836,6 +930,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg19816.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 16,
@@ -845,6 +940,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg21042.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 17,
@@ -854,6 +950,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg19802.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 18,
@@ -863,6 +960,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg16389.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 19,
@@ -872,6 +970,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg14005.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 20,
@@ -881,6 +980,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg18883.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 21,
@@ -890,6 +990,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg16775.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 22,
@@ -899,6 +1000,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg19800.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 23,
@@ -908,6 +1010,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg16830.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 24,
@@ -917,6 +1020,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg12845.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 25,
@@ -926,6 +1030,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg16906.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 26,
@@ -935,6 +1040,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg20873.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 27,
@@ -944,6 +1050,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg15076.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 28,
@@ -953,6 +1060,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg19867.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 29,
@@ -962,6 +1070,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg21045.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 30,
@@ -971,6 +1080,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg13870.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 31,
@@ -979,6 +1089,7 @@ const wideReceivers = [
     image: null,
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 32,
@@ -988,6 +1099,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg16020.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 33,
@@ -997,6 +1109,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg17961.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 34,
@@ -1006,6 +1119,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg16866.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 35,
@@ -1015,6 +1129,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg8355.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 36,
@@ -1024,6 +1139,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg20932.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 37,
@@ -1033,6 +1149,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg17986.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 38,
@@ -1042,6 +1159,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg17916.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 39,
@@ -1051,6 +1169,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg20943.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 40,
@@ -1060,6 +1179,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg11063.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 41,
@@ -1069,6 +1189,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg11611.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 42,
@@ -1078,6 +1199,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg16568.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 43,
@@ -1087,6 +1209,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg21077.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 44,
@@ -1096,6 +1219,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg18914.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 45,
@@ -1105,6 +1229,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg19864.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 46,
@@ -1113,6 +1238,7 @@ const wideReceivers = [
     image: null,
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 47,
@@ -1122,6 +1248,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg16003.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 48,
@@ -1131,6 +1258,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg16640.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 49,
@@ -1139,6 +1267,7 @@ const wideReceivers = [
     image: null,
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 50,
@@ -1148,6 +1277,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg16787.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 51,
@@ -1157,6 +1287,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg18187.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 52,
@@ -1166,6 +1297,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg19815.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 53,
@@ -1174,6 +1306,7 @@ const wideReceivers = [
     image: null,
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 54,
@@ -1182,6 +1315,7 @@ const wideReceivers = [
     image: null,
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 55,
@@ -1191,6 +1325,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg20145.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 56,
@@ -1200,6 +1335,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg18992.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 57,
@@ -1209,6 +1345,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg5571.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 58,
@@ -1217,6 +1354,7 @@ const wideReceivers = [
     image: null,
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 59,
@@ -1226,6 +1364,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg17048.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 60,
@@ -1235,6 +1374,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg3943.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 61,
@@ -1244,6 +1384,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg18928.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 62,
@@ -1253,6 +1394,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg14141.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 63,
@@ -1262,6 +1404,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg14187.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 64,
@@ -1270,6 +1413,7 @@ const wideReceivers = [
     image: null,
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 65,
@@ -1279,6 +1423,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg20924.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 66,
@@ -1287,6 +1432,7 @@ const wideReceivers = [
     image: null,
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 67,
@@ -1295,6 +1441,7 @@ const wideReceivers = [
     image: null,
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 68,
@@ -1304,6 +1451,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg18879.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 69,
@@ -1313,6 +1461,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg20788.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 70,
@@ -1321,6 +1470,7 @@ const wideReceivers = [
     image: null,
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 71,
@@ -1330,6 +1480,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg13227.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 72,
@@ -1338,6 +1489,7 @@ const wideReceivers = [
     image: null,
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 73,
@@ -1347,6 +1499,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg9906.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 74,
@@ -1355,6 +1508,7 @@ const wideReceivers = [
     image: null,
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 75,
@@ -1364,6 +1518,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg13878.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 76,
@@ -1373,6 +1528,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg19865.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 77,
@@ -1381,6 +1537,7 @@ const wideReceivers = [
     image: null,
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 78,
@@ -1390,6 +1547,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg17290.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 79,
@@ -1399,6 +1557,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg16837.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 80,
@@ -1407,6 +1566,7 @@ const wideReceivers = [
     image: null,
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 81,
@@ -1416,6 +1576,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg21005.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 82,
@@ -1425,6 +1586,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg18881.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 83,
@@ -1434,6 +1596,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg15196.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 84,
@@ -1442,6 +1605,7 @@ const wideReceivers = [
     image: null,
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 85,
@@ -1451,6 +1615,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/usat16790.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 86,
@@ -1459,6 +1624,7 @@ const wideReceivers = [
     image: null,
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 87,
@@ -1467,6 +1633,7 @@ const wideReceivers = [
     image: null,
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 88,
@@ -1475,6 +1642,7 @@ const wideReceivers = [
     image: null,
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 89,
@@ -1484,6 +1652,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg19064.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 90,
@@ -1493,6 +1662,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg20820.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 91,
@@ -1502,6 +1672,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg21037.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 92,
@@ -1510,6 +1681,7 @@ const wideReceivers = [
     image: null,
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 93,
@@ -1518,6 +1690,7 @@ const wideReceivers = [
     image: null,
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 94,
@@ -1527,6 +1700,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg19897.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 95,
@@ -1536,6 +1710,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg12109.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 96,
@@ -1544,6 +1719,7 @@ const wideReceivers = [
     image: null,
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 97,
@@ -1552,6 +1728,7 @@ const wideReceivers = [
     image: null,
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 98,
@@ -1561,6 +1738,7 @@ const wideReceivers = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg19514.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 99,
@@ -1569,6 +1747,7 @@ const wideReceivers = [
     image: null,
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
 ];
 
@@ -1581,6 +1760,7 @@ const quarterBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg19781.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 2,
@@ -1590,6 +1770,7 @@ const quarterBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg18890.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 3,
@@ -1599,6 +1780,7 @@ const quarterBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg18055.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 4,
@@ -1608,6 +1790,7 @@ const quarterBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg20889.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 5,
@@ -1617,6 +1800,7 @@ const quarterBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg14536.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 6,
@@ -1626,6 +1810,7 @@ const quarterBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg7242.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 7,
@@ -1635,6 +1820,7 @@ const quarterBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg18857.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 8,
@@ -1644,6 +1830,7 @@ const quarterBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg17920.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 9,
@@ -1653,6 +1840,7 @@ const quarterBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg19801.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 10,
@@ -1662,6 +1850,7 @@ const quarterBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg9038.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 11,
@@ -1671,6 +1860,7 @@ const quarterBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg4314.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 12,
@@ -1680,6 +1870,7 @@ const quarterBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg2593.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 13,
@@ -1689,6 +1880,7 @@ const quarterBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg732.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 14,
@@ -1698,6 +1890,7 @@ const quarterBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg20841.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 15,
@@ -1707,6 +1900,7 @@ const quarterBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg3807.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 16,
@@ -1716,6 +1910,7 @@ const quarterBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg13320.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 17,
@@ -1725,6 +1920,7 @@ const quarterBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg13799.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 18,
@@ -1734,6 +1930,7 @@ const quarterBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg14252.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 19,
@@ -1743,6 +1940,7 @@ const quarterBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg17922.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 20,
@@ -1752,6 +1950,7 @@ const quarterBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg20880.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 21,
@@ -1760,6 +1959,7 @@ const quarterBacks = [
     image: null,
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 22,
@@ -1769,6 +1969,7 @@ const quarterBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg16311.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 23,
@@ -1778,6 +1979,7 @@ const quarterBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg19790.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 24,
@@ -1787,6 +1989,7 @@ const quarterBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg8244.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 25,
@@ -1796,6 +1999,7 @@ const quarterBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg16041.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 26,
@@ -1805,6 +2009,7 @@ const quarterBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg19812.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 27,
@@ -1814,6 +2019,7 @@ const quarterBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg20859.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 28,
@@ -1823,6 +2029,7 @@ const quarterBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg16497.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 29,
@@ -1832,6 +2039,7 @@ const quarterBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg20795.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 30,
@@ -1841,6 +2049,7 @@ const quarterBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg8283.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 31,
@@ -1850,6 +2059,7 @@ const quarterBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg13723.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 32,
@@ -1858,6 +2068,7 @@ const quarterBacks = [
     image: null,
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 33,
@@ -1867,6 +2078,7 @@ const quarterBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg12831.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 34,
@@ -1876,6 +2088,7 @@ const quarterBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg18811.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 35,
@@ -1884,6 +2097,7 @@ const quarterBacks = [
     image: null,
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 36,
@@ -1893,6 +2107,7 @@ const quarterBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg20954.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 37,
@@ -1902,6 +2117,7 @@ const quarterBacks = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg19238.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
 ];
 
@@ -1914,6 +2130,7 @@ const tightEnds = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg15048.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 2,
@@ -1923,6 +2140,7 @@ const tightEnds = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg19063.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 3,
@@ -1932,6 +2150,7 @@ const tightEnds = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg19803.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 4,
@@ -1941,6 +2160,7 @@ const tightEnds = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg14856.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 5,
@@ -1950,6 +2170,7 @@ const tightEnds = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg16964.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 6,
@@ -1959,6 +2180,7 @@ const tightEnds = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg8534.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 7,
@@ -1968,6 +2190,7 @@ const tightEnds = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg19853.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 8,
@@ -1977,6 +2200,7 @@ const tightEnds = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg18032.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 9,
@@ -1986,6 +2210,7 @@ const tightEnds = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg18912.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 10,
@@ -1995,6 +2220,7 @@ const tightEnds = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg17975.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 11,
@@ -2004,6 +2230,7 @@ const tightEnds = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg18990.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 12,
@@ -2013,6 +2240,7 @@ const tightEnds = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg20753.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 13,
@@ -2022,6 +2250,7 @@ const tightEnds = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg19843.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 14,
@@ -2031,6 +2260,7 @@ const tightEnds = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg10974.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 15,
@@ -2040,6 +2270,7 @@ const tightEnds = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg15602.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 16,
@@ -2049,6 +2280,7 @@ const tightEnds = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg17963.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 17,
@@ -2058,6 +2290,7 @@ const tightEnds = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg16451.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 18,
@@ -2067,6 +2300,7 @@ const tightEnds = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg19457.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 19,
@@ -2076,6 +2310,7 @@ const tightEnds = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg19947.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 20,
@@ -2085,6 +2320,7 @@ const tightEnds = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg20805.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 21,
@@ -2094,6 +2330,7 @@ const tightEnds = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg19863.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 22,
@@ -2103,6 +2340,7 @@ const tightEnds = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg1658.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 23,
@@ -2111,6 +2349,7 @@ const tightEnds = [
     image: null,
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 24,
@@ -2120,6 +2359,7 @@ const tightEnds = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg15247.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 25,
@@ -2129,6 +2369,7 @@ const tightEnds = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg13275.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 26,
@@ -2138,6 +2379,7 @@ const tightEnds = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg14918.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 27,
@@ -2147,6 +2389,7 @@ const tightEnds = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg18935.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 28,
@@ -2156,6 +2399,7 @@ const tightEnds = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg20850.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 29,
@@ -2165,6 +2409,7 @@ const tightEnds = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg20952.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 30,
@@ -2174,6 +2419,7 @@ const tightEnds = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg11488.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 31,
@@ -2183,6 +2429,7 @@ const tightEnds = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg19659.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 32,
@@ -2192,6 +2439,7 @@ const tightEnds = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg19910.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 33,
@@ -2201,6 +2449,7 @@ const tightEnds = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg18901.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 34,
@@ -2210,6 +2459,7 @@ const tightEnds = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg19950.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 35,
@@ -2219,6 +2469,7 @@ const tightEnds = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg15965.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 36,
@@ -2228,6 +2479,7 @@ const tightEnds = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg18876.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 37,
@@ -2237,6 +2489,7 @@ const tightEnds = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg19067.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 38,
@@ -2246,6 +2499,7 @@ const tightEnds = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg15239.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 39,
@@ -2254,6 +2508,7 @@ const tightEnds = [
     image: null,
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
   {
     rank: 40,
@@ -2263,6 +2518,7 @@ const tightEnds = [
       "https://cloud.thefantasyfootballers.com/images/app-square-sm/headshots/fdbg16593.jpg",
     playersAhead: Array(0),
     playersBehind: Array(0),
+    isViewed: false,
   },
 ];
 
