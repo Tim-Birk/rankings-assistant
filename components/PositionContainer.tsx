@@ -8,18 +8,15 @@ import Modal from "antd/lib/modal/Modal";
 import PaperList from "./PaperList";
 import { Loading } from "./notify/Loading";
 
-const { Option } = Select;
-
 const StyledAppWrapper = styled.div`
   ${({ theme }) => `
-  // background: url(https://i.pinimg.com/originals/3b/1a/66/3b1a6603b7e1e5b6c16e9f998ffb0e91.jpg);
-  background: transparent;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    background: transparent;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     @media ${theme.device.laptop} { 
       align-items: flex-start;
@@ -53,12 +50,6 @@ const StyledFormItem = styled(Form.Item)`
         display: flex;
         
        }
-    `}
-`;
-
-const StyledSelect = styled(Select)`
-  ${({ theme }) => `
-       max-width: 80px;
     `}
 `;
 
@@ -108,21 +99,6 @@ const StyledGameOver = styled.h3`
     `}
 `;
 
-const StyledGameOverContainer = styled.div`
-  ${({ theme }) => `
-      background-color: rgba(5,5,5,0.5);
-      color: #FFF;
-      width: 100%;
-      margin: 1em 0;
-      height: 40px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-top: solid 1px #FFF;
-      border-bottom: solid 1px #FFF;
-    `}
-`;
-
 const GameListContainer = styled.div`
   ${({ theme }) => `
 
@@ -165,18 +141,6 @@ const PositionContainer = ({
     startNew();
   }, []);
 
-  // const [gameState, setGameState] = useState({
-  //   defaultRanks: [],
-  //   currentPick: 1,
-  //   playerA: null,
-  //   playerB: null,
-  //   softRanks: [],
-  //   possibleComparisons: permutations(25, 2),
-  //   gameOver: false,
-  //   isLoading: false,
-  //   consecutivePlayerPick: 1,
-  // });
-
   const showModal = () => {
     setVisible(true);
   };
@@ -195,7 +159,6 @@ const PositionContainer = ({
 
     if (position === "RB") {
       const { runningBacks } = Players;
-
       runningBacks.forEach((pos) => {
         if (pos.rank <= numberTopPlayers) {
           let playersAhead = [];
@@ -247,7 +210,7 @@ const PositionContainer = ({
         }
       });
     }
-    // ToDO move game state to outer container to make cheat sheet?
+
     setGameState({
       gameOver: false,
       possibleComparisons: permutations(numberTopPlayers, 2),
@@ -259,259 +222,120 @@ const PositionContainer = ({
       isLoading: false,
       consecutivePlayerPick: 1,
     });
-    // setGameOver(false);
-    // setPossibleComparisons(permutations(numberTopPlayers, 2));
-    // setDefaultRanks((state) => [...startRanks]);
-    // setCurrentPick(1);
-    // setPlayerA(startRanks[0]);
-    // setPlayerB(startRanks[1]);
-    // setSoftRanks([]);
   };
 
-  function onlyUnique(value, index, self) {
-    return self.indexOf(value) === index;
-  }
+  const getAllLosingPlayersAffected = (lp, startingArr) => {
+    if (lp.playersAhead.length === 0) {
+      return [lp.name];
+    }
+    let playerExists = startingArr.filter((p) => p === lp.name);
+    if (playerExists.length > 0) {
+      return [lp.name];
+    }
+    let allPlayersAffected = [];
 
-  const getPlayersBehindPlayer2 = (currentPlayer) => {
-    // All players behind current player
-    //// Players currently behind the player
-    //// Players behind the players above
-    const playerBehind = getPlayerByName(gameState.defaultRanks, currentPlayer);
-    console.log(currentPlayer, playerBehind);
-    let allPlayersBehindPlayer = [];
-    playerBehind.playersAhead.forEach((pb) => allPlayersBehindPlayer.push(pb));
+    // add losing player name first
+    allPlayersAffected.push(lp.name);
+    // add losing player's playersAhead
+    allPlayersAffected = allPlayersAffected.concat(lp.playersAhead);
 
-    allPlayersBehindPlayer.forEach((pb) => {
-      // const playerBehind = getPlayerByName(defaultRanks, pb);
-      const newAllPlayersBehind = getPlayersBehindPlayer(pb);
-      allPlayersBehindPlayer = allPlayersBehindPlayer
-        .concat(newAllPlayersBehind)
-        .filter(onlyUnique);
+    // loop through losing player's playersBehind and get those players' playersbehind
+    lp.playersAhead.map((pa) => {
+      let player = getPlayerByName(pa);
+      let newPlayersAhead = player.playersAhead;
+      // add current player's playersAhead to array
+      allPlayersAffected = allPlayersAffected.concat(newPlayersAhead);
+      allPlayersAffected = allPlayersAffected.concat(
+        getAllLosingPlayersAffected(player, allPlayersAffected)
+      );
     });
-
-    return allPlayersBehindPlayer;
+    return Array.from(new Set(allPlayersAffected));
   };
 
-  const getPlayersBehindPlayer = (currentPlayer) => {
-    // All players behind current player
-    //// Players currently behind the player
-    //// Players behind the players above
+  const getAllWinningPlayersAffected = (wp, startingArr) => {
+    if (wp.playersBehind.length === 0) {
+      return [wp.name];
+    }
+    let playerExists = startingArr.filter((p) => p === wp.name);
+    if (playerExists.length > 0) {
+      return [wp.name];
+    }
+    let allPlayersAffected = [];
 
-    // console.log(currentPlayer);
+    // add winning player name first
+    allPlayersAffected.push(wp.name);
+    // add winning player's playersBehind
+    allPlayersAffected = allPlayersAffected.concat(wp.playersBehind);
 
-    // Get the player object
-    const playerBehind = getPlayerByName(gameState.defaultRanks, currentPlayer);
-    // define the final list of players we want
-    let allPlayersBehindPlayer = [];
-    playerBehind.playersAhead.forEach((pb) => allPlayersBehindPlayer.push(pb));
-
-    // for each one of those players that has a player ahead of them (and players ahead of them, and so on...) - add those players to the list
-    // iterate only once through the entire ranks to determine if the iterated player fits the criteria above
-    gameState.defaultRanks.forEach((dr) => {
-      // For each already known player that is ahead of the current, add players ahead of them to the list
-      playerBehind.playersAhead.forEach((pb) => {
-        // the player is currently in the playersAhead to add that player
-        if (dr.name === pb) {
-          allPlayersBehindPlayer.push(dr.name);
-          // get players ahead of this player
-          const pbObj = getPlayerByName(gameState.defaultRanks, pb);
-          let otherPlayersAhead = [];
-          pbObj.playersAhead.forEach((opb) => {
-            otherPlayersAhead.push(opb);
-          });
-          allPlayersBehindPlayer = allPlayersBehindPlayer
-            .concat(otherPlayersAhead)
-            .filter(onlyUnique);
-        }
-      });
+    // loop through winning player's playersBehind and get those players' playersbehind
+    wp.playersBehind.map((pa) => {
+      let player = getPlayerByName(pa);
+      let newPlayersBehind = player.playersBehind;
+      // add current player's playersBehind to array
+      allPlayersAffected = allPlayersAffected.concat(newPlayersBehind);
+      allPlayersAffected = allPlayersAffected.concat(
+        getAllWinningPlayersAffected(player, allPlayersAffected)
+      );
     });
-
-    return allPlayersBehindPlayer;
-  };
-
-  const getPlayersAheadOfPlayer2 = (currentPlayer) => {
-    // All players ahead of current player
-    //// Players currently ahead the player
-    //// Players ahead the players above
-
-    // console.log(currentPlayer);
-
-    const playerAhead = getPlayerByName(gameState.defaultRanks, currentPlayer);
-    let allPlayersAheadOfPlayer = [];
-    playerAhead.playersBehind.forEach((pb) => allPlayersAheadOfPlayer.push(pb));
-
-    allPlayersAheadOfPlayer.forEach((pb) => {
-      const newAllPlayersAhead = getPlayersAheadOfPlayer(pb);
-      allPlayersAheadOfPlayer = allPlayersAheadOfPlayer
-        .concat(newAllPlayersAhead)
-        .filter(onlyUnique);
-    });
-
-    return allPlayersAheadOfPlayer;
-  };
-
-  const getPlayersAheadOfPlayer = (currentPlayer) => {
-    // All players ahead of current player
-    //// Players currently ahead the player
-    //// Players ahead the players above
-
-    // console.log(currentPlayer);
-
-    // Get the player object
-    const playerAhead = getPlayerByName(gameState.defaultRanks, currentPlayer);
-    // define the final list of players we want
-    let allPlayersAheadOfPlayer = [];
-    // get the players currently ahead of the player
-    // playerAhead.playersBehind.forEach((pb) => allPlayersAheadOfPlayer.push(pb));
-
-    // for each one of those players that has a player ahead of them (and players ahead of them, and so on...) - add those players to the list
-    // iterate only once through the entire ranks to determine if the iterated player fits the criteria above
-    gameState.defaultRanks.forEach((dr) => {
-      // For each already known player that is ahead of the current, add players ahead of them to the list
-      playerAhead.playersBehind.forEach((pb) => {
-        // the player is currently in the playersAhead to add that player
-        if (dr.name === pb) {
-          allPlayersAheadOfPlayer.push(dr.name);
-          // get players ahead of this player
-          const pbObj = getPlayerByName(gameState.defaultRanks, pb);
-          let otherPlayersBehind = [];
-          pbObj.playersBehind.forEach((opb) => {
-            otherPlayersBehind.push(opb);
-          });
-          allPlayersAheadOfPlayer = allPlayersAheadOfPlayer
-            .concat(otherPlayersBehind)
-            .filter(onlyUnique);
-        }
-      });
-    });
-
-    return allPlayersAheadOfPlayer;
-  };
-
-  const getPlayerAndPlayersAhead = (player) => {
-    let playerAndPlayersAhead = getPlayersAheadOfPlayer(player.name);
-    playerAndPlayersAhead.push(player.name);
-    return playerAndPlayersAhead;
-  };
-
-  const getPlayerAndPlayersBehind = (player) => {
-    let playerAndPlayersBehind = getPlayersBehindPlayer(player.name);
-    playerAndPlayersBehind.push(player.name);
-    return playerAndPlayersBehind;
+    return Array.from(new Set(allPlayersAffected));
   };
 
   const advanceNextPick = async (winningPlayer, losingPlayer) => {
     // winning player and winningPlayer.playersAhead all need to have their playersBehind updated with losing player and all losing player's playersBehind
     // losing player and losingPlayer.playersBehind all need to have their playersAhead updated with winning player and all winning player's playersAhead
 
-    console.log(winningPlayer, losingPlayer);
     // add the winningPlayer into the losingPlayers' playersBehind to also check THOSE playersBehind...
     losingPlayer.playersBehind.push(winningPlayer.name);
     // add the losingPlayer into the winningPlayers' playersAhead to also check THOSE playersBehind...
     winningPlayer.playersAhead.push(losingPlayer.name);
 
-    // CMC, Zeke
-    console.log(winningPlayer, losingPlayer);
+    //  get all players currently ahead of winner and players ahead those players etc...
+    const allWinningPlayersAffected = getAllWinningPlayersAffected(
+      winningPlayer,
+      []
+    );
+    //  get all players currently behind loser and players behind those players etc...
+    const allLosingPlayersAffected = getAllLosingPlayersAffected(
+      losingPlayer,
+      []
+    );
 
-    // (A) Winner and all players ahead of Winner:
-    let winnerAndPlayersAhead = getPlayerAndPlayersAhead(winningPlayer);
-    // (B) Loser and all players Loser is ahead of
-    let loserAndPlayersAhead = getPlayerAndPlayersBehind(losingPlayer);
-
-    // Actions for Winner and all players ahead of Winner:
-    ////set playersAhead to (B) Loser and all players Loser is ahead of...
-
-    // Actions for (B) Loser and all players Loser is ahead of:
-    ////set playersBehind to (A) Winner and all players ahead of Winner...
-
-    console.log(winnerAndPlayersAhead);
-    console.log(loserAndPlayersAhead);
-
-    const newRanks = gameState.defaultRanks.map((player) => {
-      // check if player in winnersAndPlayersAhead
-      const checkPlayerWPA = winnerAndPlayersAhead.filter(
-        (wpa) => wpa === player.name
-      );
-      if (checkPlayerWPA[0]) {
-        // set playersAhead to (B) Loser and all players Loser is ahead of...
-        const playersToSet = loserAndPlayersAhead.filter((lpa) => {
-          let noAdd = false;
-          if (lpa === player.name) {
-            // it is the current player
-            noAdd = true;
-          }
-          const playerBehind = player.playersBehind.filter((pb) => pb === lpa);
-          if (playerBehind[0]) {
-            // in the current players behind
-            noAdd = true;
-          }
-          const playerAhead = player.playersAhead.filter((pb) => pb === lpa);
-          if (playerAhead[0]) {
-            // in the current players behind
-            noAdd = true;
-          }
-          if (!noAdd) {
-            return lpa;
-          }
-        });
-        const newPlayersAhead = player.playersAhead
-          .concat(playersToSet)
-          .filter(onlyUnique);
-
-        let updatedPlayer = {
-          ...player,
-          playersAhead: newPlayersAhead,
-        };
+    // update players in defaultRanks for next gameState
+    const newRanks = gameState.defaultRanks.map((p) => {
+      // determine if winner or loser
+      const win = allWinningPlayersAffected.filter((pa) => pa === p.name);
+      if (win.length > 0) {
+        let newPlayersAhead = Array.from(
+          new Set(p.playersAhead.concat(allLosingPlayersAffected))
+        );
+        let isViewed = false;
+        if (p.name === winningPlayer.name || p.isViewed) {
+          isViewed = true;
+        }
+        let updatedPlayer = { ...p, playersAhead: newPlayersAhead, isViewed };
         const softRank = getSoftRank(updatedPlayer);
         updatedPlayer = { ...updatedPlayer, softRank };
         return updatedPlayer;
       }
-      // check if player in loserAndPlayersAhead
-      const checkPlayerLPA = loserAndPlayersAhead.filter(
-        (lpa) => lpa === player.name
-      );
-      if (checkPlayerLPA[0]) {
-        //set playersBehind to (A) Winner and all players ahead of Winner...
-        const playersToSet = winnerAndPlayersAhead.filter((wpa) => {
-          let noAdd = false;
-          if (wpa === player.name) {
-            // it is the current player
-            noAdd = true;
-          }
-          const playerBehind = player.playersBehind.filter((pb) => pb === wpa);
-          if (playerBehind[0]) {
-            // in the current players behind
-            noAdd = true;
-          }
-          const playerAhead = player.playersAhead.filter((pb) => pb === wpa);
-          if (playerAhead[0]) {
-            // in the current players behind
-            noAdd = true;
-          }
-          if (!noAdd) {
-            return wpa;
-          }
-        });
-        const newPlayersBehind = player.playersBehind
-          .concat(playersToSet)
-          .filter(onlyUnique);
-
-        let updatedPlayer = {
-          ...player,
-          playersBehind: newPlayersBehind,
-        };
+      const lose = allLosingPlayersAffected.filter((pa) => pa === p.name);
+      if (lose.length > 0) {
+        let newPlayersBehind = Array.from(
+          new Set(p.playersBehind.concat(allWinningPlayersAffected))
+        );
+        let isViewed = false;
+        if (p.name === losingPlayer.name || p.isViewed) {
+          isViewed = true;
+        }
+        let updatedPlayer = { ...p, playersBehind: newPlayersBehind, isViewed };
         const softRank = getSoftRank(updatedPlayer);
         updatedPlayer = { ...updatedPlayer, softRank };
         return updatedPlayer;
       }
-      const softRank = getSoftRank(player);
-      let updatedPlayer = { ...player, softRank };
-      return updatedPlayer;
+      const softRank = getSoftRank(p);
+      return { ...p, softRank };
     });
 
-    console.log(newRanks);
-
-    // initialze variables for next state
+    // initialze other variables for next gameState
     let newPlayerA = losingPlayer;
     let newPlayerB = null;
     const newCurrentPick = gameState.currentPick + 1;
@@ -523,7 +347,6 @@ const PositionContainer = ({
     // get a new randomPlayer
     const randomPlayer = getRandomPlayer(newRanks);
 
-    // console.log(randomPlayer);
     // // make sure that it is not the same player as new playerA (previously losing player)
     // // make sure that the new randomPlayer does not exist in any of the comparisons (new or old)
     if (
@@ -540,7 +363,6 @@ const PositionContainer = ({
       const newPlayers = getTwoPlayersNotCompared(newRanks);
       if (newPlayers.length === 0) {
         console.log("game ended because no two random players found");
-        // setGameOver(true);
         setGameState((st) => ({ ...st, gameOver: true, isLoading: false }));
       } else {
         newPlayerA = newPlayers[0];
@@ -549,13 +371,19 @@ const PositionContainer = ({
     }
 
     // get new soft ranks
-    let newSoftRanks = newRanks.filter((nr) => nr.softRank);
+    let newSoftRanks = [];
+    newRanks.forEach((nr) => {
+      if (nr.isViewed) {
+        newSoftRanks.push(nr);
+      }
+    });
     newSoftRanks = newSoftRanks.sort(compareSoftRank);
 
     if (consecutivePlayerPick >= 3) {
       // reset Pick
       consecutivePlayerPick = 1;
     }
+
     // Set newState
     setGameState((st) => ({
       ...st,
@@ -566,60 +394,31 @@ const PositionContainer = ({
       softRanks: newSoftRanks,
       consecutivePlayerPick: consecutivePlayerPick,
     }));
-
-    // setDefaultRanks(newRanks);
-    // setPlayerA(newPlayerA);
-    // setPlayerB(newPlayerB);
-    // setCurrentPick(newCurrentPick);
-    // setSoftRanks(newSoftRanks);
-
-    // if randomPlayer is found and satisfies criteria above, then setPlayerB to random player
-    // // if no random player was found that hasn't been compared with playerA, check if gameOver (then gameOver)
-    // // if not, get two new random players that haven't been compared and restart process (until gameOver)
-
-    // set winningPlayer players behind
-    // //  losing player
-    // //  losing player's current playersBehind >> playersBehind's playersBehind >> and so on...
-
-    // set winningPlayer's playersAhead's playersBehind
-    // //  losing player's playersBehind >> playersBehind's playersBehind >> and so on...
-    // add comparisons for every single derived comparison above
-
-    // set playerA to losing player
-    // setCurrentPick to next pick
-
-    // get a new randomPlayer
-    // // make sure that it is not the same player as new playerA (previously losing player)
-    // // make sure that the new randomPlayer does not exist in any of the comparisons (new or old)
-
-    // if randomPlayer is found and satisfies criteria above, then setPlayerB to random player
-    // // if no random player was found that hasn't been compared with playerA, check if gameOver (then gameOver)
-    // // if not, get two new random players that haven't been compared and restart process (until gameOver)
   };
 
-  const getSoftRank = (player) => {
-    let softRank = null;
-
-    if (player.playersBehind.length !== 0 || player.playersAhead.length !== 0) {
-      softRank = player.playersBehind.length + 1;
-    }
-
-    return softRank;
+  const getRandomPlayer = (ranks) => {
+    const max = Math.floor(numberTopPlayers);
+    const randomPick = Math.floor(Math.random() * Math.floor(max));
+    const randomPlayer = ranks[randomPick];
+    return randomPlayer;
   };
 
-  function compareSoftRank(a, b) {
-    if (a.softRank < b.softRank) {
-      return -1;
+  const getPlayerByName = (name) => {
+    const foundPlayer = gameState.defaultRanks.filter(
+      (defaultRank) => defaultRank.name === name
+    );
+
+    return foundPlayer[0];
+  };
+
+  const checkIsSamePlayer = (player, randomPlayer) => {
+    if (player.rank === randomPlayer.rank) {
+      return true;
     }
-    if (a.softRank > b.softRank) {
-      return 1;
-    }
-    return 0;
-  }
+    return false;
+  };
 
   const checkComparisonAlreadyExists = (p1, p2) => {
-    // console.log(p1, p2);
-    //if the p2 is in the p1's playersAhead or playersBehind, the comparison has been made
     const playerBehind = p1.playersBehind.filter((p) => p === p2.name);
     if (playerBehind[0]) {
       return true;
@@ -643,7 +442,7 @@ const PositionContainer = ({
   const getTwoPlayersNotCompared = (ranks) => {
     let comparedStop = 0;
     let comparisonFound = false;
-    // debugger;
+
     do {
       const randomA = getRandomPlayer(ranks);
       const randomB = getRandomPlayer(ranks);
@@ -662,27 +461,25 @@ const PositionContainer = ({
     }
   };
 
-  const checkIsSamePlayer = (player, randomPlayer) => {
-    if (player.rank === randomPlayer.rank) {
-      return true;
+  const getSoftRank = (player) => {
+    let softRank = null;
+
+    if (player.playersBehind.length !== 0 || player.playersAhead.length !== 0) {
+      softRank = player.playersBehind.length + 1;
     }
-    return false;
+
+    return softRank;
   };
 
-  const getRandomPlayer = (ranks) => {
-    const max = Math.floor(numberTopPlayers);
-    const randomPick = Math.floor(Math.random() * Math.floor(max));
-    const randomPlayer = ranks[randomPick];
-    return randomPlayer;
-  };
-
-  const getPlayerByName = (ranks, name) => {
-    const foundPlayer = ranks.filter(
-      (defaultRank) => defaultRank.name === name
-    );
-
-    return foundPlayer[0];
-  };
+  function compareSoftRank(a, b) {
+    if (a.softRank < b.softRank) {
+      return -1;
+    }
+    if (a.softRank > b.softRank) {
+      return 1;
+    }
+    return 0;
+  }
 
   return (
     <>
@@ -758,28 +555,6 @@ const PositionContainer = ({
                   />
                 </StyledFormItem>
               </Col>
-              {/* <Col span={24} offset={1}>
-              <Form.Item label="Position" name="position">
-                <StyledSelect
-                  placeholder="Position"
-                  value={position}
-                  onChange={(value) => setCurrentPosition(value)}
-                >
-                  <Option key="QB" value={"QB"}>
-                    QB
-                  </Option>
-                  <Option key="RB" value={"RB"}>
-                    RB
-                  </Option>
-                  <Option key="WR" value={"WR"}>
-                    WR
-                  </Option>
-                  <Option key="TE" value={"TE"}>
-                    TE
-                  </Option>
-                </StyledSelect>
-              </Form.Item>
-            </Col> */}
             </StyledRow>
           </Form>
         </Modal>
