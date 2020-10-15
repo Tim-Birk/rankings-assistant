@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Players from "../utils/players";
-import { Form, Row, Col, Select, Input } from "antd";
+import { Form, Row, Col, Input } from "antd";
 import styled from "styled-components";
 import PlayerComparison from "./PlayerComparison";
 import { permutations } from "mathjs";
@@ -41,7 +41,10 @@ const StyledButtonContainer = styled(Row)`
        width: 170px;
        display: flex;
        justify-content: space-between;
-       
+       margin-left: 1em;
+       @media ${theme.device.mobileL} { 
+        margin: 0 auto;
+       }
     `}
 `;
 const StyledFormItem = styled(Form.Item)`
@@ -55,21 +58,28 @@ const StyledFormItem = styled(Form.Item)`
 
 const StyledNewButton = styled.button`
   ${({ theme }) => `
-       color: #FFF;
-       width: 80px;
-       background-color: rgba(5,5,5,0.5);
-       font-weight: 600;
-       border: 1px solid #FFF;
-       cursor: pointer;
-       outline: none;
-      &:hover {
-        border: 1px solid #FFF;
-        background-color: rgba(5,5,5,0.2);
-        transition: background-color 0.7s;
-       
-        
-      }
-    `}
+    color: #FFF;
+    width: 80px;
+    height: 30px;
+    background-color: rgba(5,5,5,0.5);
+    font-weight: 600;
+    border: 1px solid #FFF;
+    cursor: pointer;
+    outline: none;
+    &:hover {
+      border: 1px solid #FFF;
+      background-color: rgba(5,5,5,0.2);
+      transition: background-color 0.7s;
+
+    }
+
+    @media ${theme.device.tablet} { 
+      font-size: 1rem;
+    }
+    @media ${theme.device.laptop} { 
+      
+    }
+  `}
 `;
 const StyledOptionsButton = styled.button`
   ${({ theme }) => `
@@ -80,22 +90,31 @@ const StyledOptionsButton = styled.button`
   border: 1px solid #FFF;
   cursor: pointer;
   outline: none;
- &:hover {
-   border: 1px solid #FFF;
-   background-color: rgba(5,5,5,0.2);
-   transition: background-color 0.7s;
-  
-  
+    &:hover {
+      border: 1px solid #FFF;
+      background-color: rgba(5,5,5,0.2);
+      transition: background-color 0.7s;
+    }
+    @media ${theme.device.tablet} { 
+      font-size: 1rem;
+    }
+    @media ${theme.device.laptop} { 
+    
+    }
        
-    `}
+  `}
 `;
 
 const StyledGameOver = styled.h3`
   ${({ theme }) => `
        color: #FFF;
        margin-top: 1em;
-       margin-bottom: 0;
+       margin-bottom: 0.5em;
        text-shadow: 0px 1px 7px rgba(99,99,99,1);
+       
+       @media ${theme.device.tablet} { 
+        margin: 1em auto 0.5em;
+      }
     `}
 `;
 
@@ -106,6 +125,7 @@ const GameListContainer = styled.div`
         display: grid;
         grid-template-columns:  3fr 1fr;
         max-width: 900px;
+        margin: 0 auto;
     }
 
   `}
@@ -134,7 +154,7 @@ const PositionContainer = ({
   const [numberTopPlayers, setNumberTopPlayers] = useState(
     defaultNumberPlayers
   );
-  // const [currentPosition, setCurrentPosition] = useState("RB");
+
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -156,14 +176,20 @@ const PositionContainer = ({
 
   const startNew = () => {
     let startRanks = [];
+    let autoRankDifferential = 10;
 
+    // Retrieve the amount of players for each postion as set in game settings to feed to position containers
+    // automatically rank players that are, by default, "n" spots lower than the autoRankDifferential
     if (position === "RB") {
       const { runningBacks } = Players;
       runningBacks.forEach((pos) => {
         if (pos.rank <= numberTopPlayers) {
           let playersAhead = [];
           runningBacks.forEach((p) => {
-            if (p.rank <= numberTopPlayers && p.rank - pos.rank > 10) {
+            if (
+              p.rank <= numberTopPlayers &&
+              p.rank - pos.rank > autoRankDifferential
+            ) {
               playersAhead.push(p.name);
             }
           });
@@ -176,7 +202,10 @@ const PositionContainer = ({
         if (pos.rank <= numberTopPlayers) {
           let playersAhead = [];
           wideReceivers.forEach((p) => {
-            if (p.rank <= numberTopPlayers && p.rank - pos.rank > 10) {
+            if (
+              p.rank <= numberTopPlayers &&
+              p.rank - pos.rank > autoRankDifferential
+            ) {
               playersAhead.push(p.name);
             }
           });
@@ -189,7 +218,10 @@ const PositionContainer = ({
         if (pos.rank <= numberTopPlayers) {
           let playersAhead = [];
           tightEnds.forEach((p) => {
-            if (p.rank <= numberTopPlayers && p.rank - pos.rank > 10) {
+            if (
+              p.rank <= numberTopPlayers &&
+              p.rank - pos.rank > autoRankDifferential
+            ) {
               playersAhead.push(p.name);
             }
           });
@@ -202,7 +234,10 @@ const PositionContainer = ({
         if (pos.rank <= numberTopPlayers) {
           let playersAhead = [];
           quarterBacks.forEach((p) => {
-            if (p.rank <= numberTopPlayers && p.rank - pos.rank > 10) {
+            if (
+              p.rank <= numberTopPlayers &&
+              p.rank - pos.rank > autoRankDifferential
+            ) {
               playersAhead.push(p.name);
             }
           });
@@ -222,62 +257,6 @@ const PositionContainer = ({
       isLoading: false,
       consecutivePlayerPick: 1,
     });
-  };
-
-  const getAllLosingPlayersAffected = (lp, startingArr) => {
-    if (lp.playersAhead.length === 0) {
-      return [lp.name];
-    }
-    let playerExists = startingArr.filter((p) => p === lp.name);
-    if (playerExists.length > 0) {
-      return [lp.name];
-    }
-    let allPlayersAffected = [];
-
-    // add losing player name first
-    allPlayersAffected.push(lp.name);
-    // add losing player's playersAhead
-    allPlayersAffected = allPlayersAffected.concat(lp.playersAhead);
-
-    // loop through losing player's playersBehind and get those players' playersbehind
-    lp.playersAhead.map((pa) => {
-      let player = getPlayerByName(pa);
-      let newPlayersAhead = player.playersAhead;
-      // add current player's playersAhead to array
-      allPlayersAffected = allPlayersAffected.concat(newPlayersAhead);
-      allPlayersAffected = allPlayersAffected.concat(
-        getAllLosingPlayersAffected(player, allPlayersAffected)
-      );
-    });
-    return Array.from(new Set(allPlayersAffected));
-  };
-
-  const getAllWinningPlayersAffected = (wp, startingArr) => {
-    if (wp.playersBehind.length === 0) {
-      return [wp.name];
-    }
-    let playerExists = startingArr.filter((p) => p === wp.name);
-    if (playerExists.length > 0) {
-      return [wp.name];
-    }
-    let allPlayersAffected = [];
-
-    // add winning player name first
-    allPlayersAffected.push(wp.name);
-    // add winning player's playersBehind
-    allPlayersAffected = allPlayersAffected.concat(wp.playersBehind);
-
-    // loop through winning player's playersBehind and get those players' playersbehind
-    wp.playersBehind.map((pa) => {
-      let player = getPlayerByName(pa);
-      let newPlayersBehind = player.playersBehind;
-      // add current player's playersBehind to array
-      allPlayersAffected = allPlayersAffected.concat(newPlayersBehind);
-      allPlayersAffected = allPlayersAffected.concat(
-        getAllWinningPlayersAffected(player, allPlayersAffected)
-      );
-    });
-    return Array.from(new Set(allPlayersAffected));
   };
 
   const advanceNextPick = async (winningPlayer, losingPlayer) => {
@@ -304,10 +283,12 @@ const PositionContainer = ({
     const newRanks = gameState.defaultRanks.map((p) => {
       // determine if winner or loser
       const win = allWinningPlayersAffected.filter((pa) => pa === p.name);
+      // If player is a "winning" player, then set the players that winning player is ahead of to contain allLosingPlayersAffected
       if (win.length > 0) {
         let newPlayersAhead = Array.from(
           new Set(p.playersAhead.concat(allLosingPlayersAffected))
         );
+        // Set this flag for winning player that was compared so they now show up in softRanks to display in Rankings List
         let isViewed = false;
         if (p.name === winningPlayer.name || p.isViewed) {
           isViewed = true;
@@ -317,11 +298,13 @@ const PositionContainer = ({
         updatedPlayer = { ...updatedPlayer, softRank };
         return updatedPlayer;
       }
+      // If player is a "losing" player, then set the players that losing player is behind to contain allWinningPlayersAffected
       const lose = allLosingPlayersAffected.filter((pa) => pa === p.name);
       if (lose.length > 0) {
         let newPlayersBehind = Array.from(
           new Set(p.playersBehind.concat(allWinningPlayersAffected))
         );
+        // Set this flag for losing player that was compared so they now show up in softRanks to display in Rankings List
         let isViewed = false;
         if (p.name === losingPlayer.name || p.isViewed) {
           isViewed = true;
@@ -339,6 +322,7 @@ const PositionContainer = ({
     let newPlayerA = losingPlayer;
     let newPlayerB = null;
     const newCurrentPick = gameState.currentPick + 1;
+    // Accounts for if the same player has been displayed the max consecutive times in a row
     let consecutivePlayerPick =
       newPlayerA === gameState.playerA
         ? gameState.consecutivePlayerPick + 1
@@ -358,10 +342,11 @@ const PositionContainer = ({
     } else {
       // No random player was found that hasn't been compared with playerA
 
-      // There are still possible iterations
+      // There are still possible comparisons
       // get another set of players that have not been compared
       const newPlayers = getTwoPlayersNotCompared(newRanks);
       if (newPlayers.length === 0) {
+        // No more possible comparisons
         console.log("game ended because no two random players found");
         setGameState((st) => ({ ...st, gameOver: true, isLoading: false }));
       } else {
@@ -394,6 +379,64 @@ const PositionContainer = ({
       softRanks: newSoftRanks,
       consecutivePlayerPick: consecutivePlayerPick,
     }));
+  };
+
+  const getAllLosingPlayersAffected = (lp, startingArr) => {
+    if (lp.playersAhead.length === 0) {
+      return [lp.name];
+    }
+    // if the player is in the starting array the stop here as 2nd base case
+    let playerExists = startingArr.filter((p) => p === lp.name);
+    if (playerExists.length > 0) {
+      return [lp.name];
+    }
+    let allPlayersAffected = [];
+
+    // add losing player name first
+    allPlayersAffected.push(lp.name);
+    // add losing player's playersAhead
+    allPlayersAffected = allPlayersAffected.concat(lp.playersAhead);
+
+    // loop through losing player's playersBehind and get those players' playersbehind
+    lp.playersAhead.map((pa) => {
+      let player = getPlayerByName(pa);
+      let newPlayersAhead = player.playersAhead;
+      // add current player's playersAhead to array
+      allPlayersAffected = allPlayersAffected.concat(newPlayersAhead);
+      allPlayersAffected = allPlayersAffected.concat(
+        getAllLosingPlayersAffected(player, allPlayersAffected)
+      );
+    });
+    return Array.from(new Set(allPlayersAffected));
+  };
+
+  const getAllWinningPlayersAffected = (wp, startingArr) => {
+    if (wp.playersBehind.length === 0) {
+      return [wp.name];
+    }
+    // if the player is in the starting array the stop here as 2nd base case
+    let playerExists = startingArr.filter((p) => p === wp.name);
+    if (playerExists.length > 0) {
+      return [wp.name];
+    }
+    let allPlayersAffected = [];
+
+    // add winning player name first
+    allPlayersAffected.push(wp.name);
+    // add winning player's playersBehind
+    allPlayersAffected = allPlayersAffected.concat(wp.playersBehind);
+
+    // loop through winning player's playersBehind and get those players' playersbehind
+    wp.playersBehind.map((pa) => {
+      let player = getPlayerByName(pa);
+      let newPlayersBehind = player.playersBehind;
+      // add current player's playersBehind to array
+      allPlayersAffected = allPlayersAffected.concat(newPlayersBehind);
+      allPlayersAffected = allPlayersAffected.concat(
+        getAllWinningPlayersAffected(player, allPlayersAffected)
+      );
+    });
+    return Array.from(new Set(allPlayersAffected));
   };
 
   const getRandomPlayer = (ranks) => {
@@ -505,28 +548,36 @@ const PositionContainer = ({
             />
           </>
         ) : (
-          <GameListContainer>
-            {gameState.isLoading ? (
-              <Loading />
-            ) : (
-              <PlayerComparisonContainer>
-                {gameState.playerA && gameState.playerB ? (
-                  <PlayerComparison
-                    playerA={gameState.playerA}
-                    playerB={gameState.playerB}
-                    advanceNextPick={advanceNextPick}
-                    setGameState={setGameState}
-                  />
-                ) : null}
-              </PlayerComparisonContainer>
+          <>
+            {gameState.gameOver ? null : (
+              <StyledGameOver>
+                Continue making picks to get your final rankings for the
+                position
+              </StyledGameOver>
             )}
+            <GameListContainer>
+              {gameState.isLoading ? (
+                <Loading />
+              ) : (
+                <PlayerComparisonContainer>
+                  {gameState.playerA && gameState.playerB ? (
+                    <PlayerComparison
+                      playerA={gameState.playerA}
+                      playerB={gameState.playerB}
+                      advanceNextPick={advanceNextPick}
+                      setGameState={setGameState}
+                    />
+                  ) : null}
+                </PlayerComparisonContainer>
+              )}
 
-            <PaperList
-              softRanks={gameState.softRanks}
-              position={position}
-              inProgress={!gameState.gameOver}
-            />
-          </GameListContainer>
+              <PaperList
+                softRanks={gameState.softRanks}
+                position={position}
+                inProgress={!gameState.gameOver}
+              />
+            </GameListContainer>
+          </>
         )}
 
         <Modal

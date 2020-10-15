@@ -7,7 +7,6 @@ const StyledPaper = styled.div`
     @import url('https://fonts.googleapis.com/css?family=Indie+Flower')
 
     width: 16em;
-    // max-width: 90%;
     padding: 1.2em 1em 2em 4em;
     background-color: #fff; 
     background-image: linear-gradient(90deg, transparent 3.65em, #97bdc4 3.65em, #97bdc4 3.75em, transparent  3.75em), linear-gradient(#e1e1e1 0.1em, transparent 0.1em);
@@ -28,7 +27,6 @@ const StyledPaper = styled.div`
       grid-row: 1;
       width: 100%;
       max-width: 600px;
-      margin-left: 0
     }
     margin: 1em auto 0;
 
@@ -36,9 +34,6 @@ const StyledPaper = styled.div`
 `;
 
 const PaperList = ({ softRanks, position, inProgress }) => {
-  // if ((softRanks.length === 0)) {
-  //   return null;
-  // }
   return (
     <StyledPaper>
       <h4 style={{ textDecoration: "underline", textAlign: "left" }}>

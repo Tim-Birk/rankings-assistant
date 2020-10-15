@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Row, Col } from "antd";
 import styled from "styled-components";
-import Card from "./FlipCard2";
+import Card from "./FlipCard";
 
 const StyledPlayerCardsContainer = styled(Row)`
   ${({ theme }) => `
@@ -10,10 +10,14 @@ const StyledPlayerCardsContainer = styled(Row)`
       align-items: center;
       margin-top: ${theme["margin-small"]};
      
+      @media ${theme.device.tablet} { 
+        width: 505px
+      }
+
       @media ${theme.device.laptop} { 
         width: 505px
-    }
-    `}
+      }
+  `}
 `;
 
 const StyledOR = styled(Col)`
@@ -29,6 +33,7 @@ const StyledOR = styled(Col)`
       margin: 0 10px 2em;
     `}
 `;
+
 
 const PlayerComparison = ({
   playerA,

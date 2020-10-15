@@ -1,25 +1,27 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Col } from "antd";
-import { useSpring, animated } from "react-spring";
+import { useSpring, animated as a } from "react-spring";
+import { Loading } from "./notify/Loading";
+import { Button } from "antd";
 
-
-const StyledName = styled.h2`
+const StyledNameContainer = styled.div`
   ${({ theme }) => `
-    font-size: 0.9em;
-    @media ${theme.device.mobileM} { 
-        font-size: 1.1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-row: 2;
+    background: rgba(5, 5, 5, 0.8);
+    width: 100%;
+    padding: 4px 6px;
+    width: 100%;
+    height: 40px;
+    
+    
+    @media ${theme.device.tablet} { 
+        height: 50px;
     }
 
   `}
-`;
-
-const StyledNameContainer = styled.div`
-  grid-row: 2;
-  background: rgba(5, 5, 5, 0.8);
-  width: 100%;
-  padding: 4px 6px;
-  width: 100%;
 `;
 
 const StyledPlayerImage = styled.img`
@@ -28,415 +30,231 @@ const StyledPlayerImage = styled.img`
   height: 100%;
 `;
 
-const StyledWrapper = styled(Col)`
+const StyledName = styled.h2`
   ${({ theme }) => `
+    color: #FFF;
+    font-size: 0.9em;
+    @media ${theme.device.tablet} { 
+        font-size: 1.1em;
+    }
+
+  `}
+`;
+
+const AnimatedDiv = styled(a.div)`
+  ${({ theme }) => `
+    width: 115px;
+    height: 125px;
     
-    * {
-        box-sizing: border-box;
+    @media ${theme.device.tablet} { 
+        width: 170px;
+        height: 180px;
     }
 
-    body {
-        margin: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-        font-family: "Montserrat", sans-serif;
-    }
-    .wrapper {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .card {
-        width: 125px;
-        height: 175px;
-
-        @media ${theme.device.mobileM} { 
-            width: 160px;
-            height: 200px;
-        }
-
-
-        margin: 1em;
-        perspective: 1500px;
-        .content {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        transform-style: preserve-3d;
-        transition: transform 0.1s cubic-bezier(0.75, 0, 0.85, 1);
-        }
-    }
-
-    .more {
-        display: none;
-
-        &:checked ~ .content {
-        transform: rotateY(180deg);
-        }
-    }
-
-    .front,
-    .back {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        backface-visibility: hidden;
-        transform-style: preserve-3d;
-        border-radius: 6px;
-
-        .inner {
-        height: 100%;
-        display: grid;
-        // padding: 0.25em 1.5em;
-        transform: translateZ(80px) scale(0.94);
-        }
-    }
-
-    .front {
-        background-color: gray;
-        background-size: cover;
-        background-position: center center;
-        &:after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        display: block;
-        border-radius: 6px;
-        backface-visibility: hidden;
-        // background: linear-gradient(
-        //     40deg,
-        //     rgba(2, 0, 36, 0.7),
-        //     rgba(9, 9, 121, 0.7)
-        // );
-        }
-        .inner {
-        grid-template-rows: 75% 25%;
-        justify-items: center;
-        }
-
-        h2 {
-        // grid-row: 2;
-        // margin-bottom: 0.3em;
-        text-transform: uppercase;
-        letter-spacing: 3px;
-        color: #fff;
-        font-weight: 500;
-        text-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
-        }
-
-        // .rating {
-        // grid-row: 3;
-        // color: rgba(255, 255, 255, 0.8);
-        // font-size: 14px;
-        // display: flex;
-        // flex-flow: row nowrap;
-        // i {
-        //     margin: 0 1px;
-        // }
-        }
-    }
+    position: absolute;
+    
+    cursor: pointer;
+    will-change: transform, opacity;
 
     .back {
-        transform: rotateY(180deg);
-        background-color: #fff;
+        background: rgb(2,0,36);
+        background: linear-gradient(34deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 15%, rgba(0,212,255,1) 100%);
         border: 2px solid rgb(240, 240, 240);
-        .inner {
-        grid-template-rows: 1fr 2fr 1fr;
-        // grid-template-columns: repeat(4, auto);
-        grid-column-gap: 0.8em;
-        justify-items: center;
-        }
-
-        .info {
-        position: relative;
         display: flex;
+        justify-content: center;
         align-items: center;
-        color: ${theme["accent-color"]};
-        grid-row: 3;
-        &:not(:first-of-type):before {
-            content: "";
-            position: absolute;
-            left: -0.9em;
-            height: 18px;
-            width: 1px;
-            background-color: #ccc;
-        }
-        span {
-            font-size: 2em;
-            font-weight: 700;
-        }
-        i {
-            &:before {
-            background: linear-gradient(40deg, ${theme["accent-color"]}, rgb(67, 138, 243));
-
-            -webkit-text-fill-color: transparent;
-            -webkit-background-clip: text;
-            }
-            font-size: 1.2em;
-        }
-        .icon {
-            margin-left: 0.3em;
-            span {
-            display: block;
-            margin-top: -0.25em;
-            font-size: 0.8em;
-            font-weight: 600;
-            white-space: nowrap;
-            }
-        }
-        }
-
-        .description {
-        grid-row: 5;
-        grid-column: 1/-1;
-        font-size: 0.86em;
-        border-radius: 5px;
-        font-weight: 600;
-        line-height: 1.4em;
-        overflow: auto;
-        color: ${theme["accent-color"]};
-        padding-right: 10px;
-        }
-
-        .location,
-        .price {
-        font-weight: 600;
-        color: ${theme["accent-color"]};
-        grid-row: 1;
-        font-size: 0.86em;
-        }
-
-        .location {
-        grid-column: 1/3;
-        justify-self: left;
-        }
-
-        .price {
-        grid-column: 3/-1;
-        justify-self: right;
-        }
-
-        .button {
-        grid-column: 1/-1;
-        justify-self: center;
-        }
-    }
-
-    .button {
-        grid-row: -1;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        font-weight: 600;
-        cursor: pointer;
-        display: block;
-        padding: 0 0.45em;
-        height: 3em;
-        line-height: 2.9em;
-        min-width: 3em;
-        background-color: transparent;
-        border: solid 2px #fff;
-        color: #fff;
-        border-radius: 4px;
+        padding-bottom: ${theme["padding-medium"]};
+        padding: 0 ${theme["padding-small"]} ${theme["padding-medium"]};
         text-align: center;
-        left: 50%;
-        backface-visibility: hidden;
-        transition: 0.3s ease-in-out;
-        text-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
-
-        &:hover {
-        background-color: #fff;
-        box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
-        text-shadow: none;
-        color: ${theme["accent-color"]};
+        width: 115px;
+        height: 165px;
+        .inner {
+            color: #FFF;
+            grid-template-rows: 1fr 2fr 1fr;
+            grid-column-gap: 0.8em;
+            justify-items: center;
         }
-
-        &.return {
-        line-height: 3em;
-        color: ${theme["accent-color"]};
-        border-color: ${theme["accent-color"]};
-        text-shadow: none;
-        &:hover {
-            background-color: ${theme["accent-color"]};
-            color: #fff;
-            box-shadow: none;
+        @media ${theme.device.tablet} { 
+            width: 170px;
+            height: 230px;
         }
-        }
-    }
-
-    .info-button {
-        // margin-left: 6em;
-        // font-size: 1.5em;
-        @media ${theme.device.mobileM} { 
-            // font-size: 1em;
-            // margin-left: 10em;
-        }
-        @media ${theme.device.mobileL} { 
-            // margin-left: 11em;
-        }
-
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        font-weight: 600;
-        cursor: pointer;
-        display: block;
-        // padding: 0 0.45em;
-        // height: 3em;
-        // line-height: 2.9em;
-        min-width: 3em;
-        background-color: transparent;
-        // border: solid 2px #fff;
-        color: #fff;
-        border-radius: 4px;
-        text-align: center;
-        left: 50%;
-        backface-visibility: hidden;
-        transition: 0.3s ease-in-out;
-        text-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
-        z-index: 2;
-        
-
-        &.return {
-        line-height: 3em;
-        color: ${theme["accent-color"]};
-        border-color: ${theme["accent-color"]};
-        text-shadow: none;
-        &:hover {
-            background-color: ${theme["accent-color"]};
-            color: #fff;
-            box-shadow: none;
-        }
-        }
-    }
-
-    .pick-button {
-        // grid-row: -1;
-        @media ${theme.device.mobileM} { 
-            // font-size: 1em;
-            // margin-left: 10em;
-        }
-        @media ${theme.device.mobileL} { 
-            // margin-left: 11em;
-        }
-
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        font-weight: 600;
-        cursor: pointer;
-        display: block;
-        // padding: 0 0.45em;
-        // height: 3em;
-        // line-height: 2.9em;
-        min-width: 3em;
-        background-color: transparent;
-        border: none;
-        color: #fff;
-        border-radius: 4px;
-        text-align: center;
-        left: 50%;
-        backface-visibility: hidden;
-        transition: 0.3s ease-in-out;
-        text-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
-        margin-bottom: 1em;
-        
-
-        &.return {
-        line-height: 3em;
-        color: ${theme["accent-color"]};
-        border-color: ${theme["accent-color"]};
-        text-shadow: none;
-        &:hover {
-            background-color: ${theme["accent-color"]};
-            color: #fff;
-            box-shadow: none;
-        }
-        }
-    }
-
-    ::-webkit-scrollbar {
-        width: 5px;
-    }
-    ::-webkit-scrollbar-track {
-        background: #f1f1f1;
-    }
-    ::-webkit-scrollbar-thumb {
-        background: lighten(${theme["accent-color"]}, 20%);
-    }
-    ::-webkit-scrollbar-thumb:hover {
-        background: ${theme["accent-color"]};
     }
   `}
 `;
 
-const FlipCard = ({ player, otherPlayer, advanceNextPick }) => {
+const CardContainer = styled.div`
+  ${({ theme }) => `
+    width: 115px;
+    height: 125px;
+    
+    @media ${theme.device.tablet} { 
+        width: 170px;
+        height: 180px;
+    }
 
-  if (!player) {
-    return null;
+  `}
+`;
+
+const BackName = styled.h4`
+  ${({ theme }) => `
+    color: inherit;
+
+    @media ${theme.device.tablet} { 
+        font-size: 1.25em;
+    }
+
+  `}
+`;
+
+const PickButton = styled(Button)`
+  ${({ theme }) => `
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  cursor: pointer;
+  display: block;
+  min-width: 3em;
+  background-color: transparent;
+  border: 1px solid #fff;
+  font-size: 1.25em;
+  color: #fff;
+  border-width: 2px;
+  border-radius: 4px;
+  text-align: center;
+  backface-visibility: hidden;
+  transition: 0.3s ease-in-out;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+  margin-top: 4em;
+  user-select: none;
+  line-height: 1;
+  height: 40px;
+  
+  &.return {
+    line-height: 3em;
+    color: ${theme["accent-color"]};
+    text-shadow: none;
+    &:hover {
+        background-color: ${theme["accent-color"]};
+        color: #fff;
+        box-shadow: none;
+    }
   }
-  const handleAdvanceNextPick = () => {
-    advanceNextPick(player, otherPlayer);
-  };
 
+    @media ${theme.device.tablet} { 
+        margin-top: 4em;
+        font-size: 1.5em;
+    }
+
+  `}
+`;
+
+const BackInfo = styled.h5`
+  ${({ theme }) => `
+   color: inherit;
+   
+    @media ${theme.device.tablet} { 
+        font-size: 1em;
+    }
+
+  `}
+`;
+
+const BackRank = styled.h6`
+  ${({ theme }) => `
+   color: inherit;
+   
+    @media ${theme.device.tablet} { 
+        font-size: 1em;
+    }
+
+  `}
+`;
+
+const CardPickContainer = styled.div`
+  ${({ theme }) => `
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+    
+   width: 115px;
+   height: 200px;
+   @media ${theme.device.tablet} { 
+      width: 170px;
+      height: 275px;
+    }
+
+  `}
+`;
+
+const Card = ({
+  player,
+  otherPlayer,
+  advanceNextPick,
+  setGameState,
+  flipped,
+  set,
+  setOther,
+}) => {
+  const [isLoading, setIsLoading] = useState(false);
+  
+  const { transform, opacity } = useSpring({
+    opacity: flipped ? 1 : 0,
+    transform: `perspective(600px) rotateY(${flipped ? 180 : 0}deg)`,
+    config: { mass: 5, tension: 500, friction: 80 },
+  });
+
+  const setLoading = async (value) => {
+    setIsLoading(value);
+  };
+  const handleAdvanceNextPick = async () => {
+    setLoading(true).then(
+      advanceNextPick(player, otherPlayer).then(setLoading(false))
+    );
+    set(true);
+    setOther(true);
+  };
   return (
-    <StyledWrapper span={11}>
-      <div className="wrapper">
-        <label
-          htmlFor={`card${player.rank}`}
-          className="info-button"
-          aria-hidden="true"
-        >
-          <div className="card">
-            <input
-              type="checkbox"
-              id={`card${player.rank}`}
-              className="more"
-              aria-hidden="true"
-            />
-            <div className="content">
-              <div
-                className="front"
-                // style={{
-                //   backgroundImage: `url(${player.image})`,
-                // }}
-              >
-                <div className="inner">
-                  <StyledPlayerImage src={player.image} />
-                  <StyledNameContainer>
-                    <StyledName>{player.name}</StyledName>
-                  </StyledNameContainer>
-                </div>
-              </div>
+    <>
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <CardPickContainer>
+          <CardContainer onClick={() => set((state) => !state)}>
+            <AnimatedDiv
+              className="front"
+              style={{
+                opacity,
+                transform: transform.interpolate((t) => `${t} rotateY(180deg)`),
+              }}
+            >
+              <StyledPlayerImage
+                src={player.image ? player.image : "/blankPlayer.jpg"}
+              />
+              <StyledNameContainer>
+                <StyledName>{player.name}</StyledName>
+              </StyledNameContainer>
+            </AnimatedDiv>
+            <AnimatedDiv
+              className="back"
+              style={{
+                opacity: opacity.interpolate((o: any) => 1 - o),
+                transform,
+              }}
+            >
               <div className="back">
                 <div className="inner">
-                  <h4>{player.name}</h4>
-                  <h5>Consensus Rank: {player.rank}</h5>
-                  {/* <label
-              htmlFor={`card${player.rank}`}
-              className="button return"
-              aria-hidden="true"
-            >
-              <i className="fas fa-arrow-left"></i>
-            </label> */}
+                  <BackName>{player.name}</BackName>
+                  <BackInfo>{player.info}</BackInfo>
+                  <BackRank>Default Rank: {player.rank}</BackRank>
                 </div>
               </div>
-            </div>
-          </div>
-        </label>
-        <button className="pick-button" onClick={handleAdvanceNextPick}>
-          Pick
-        </button>
-      </div>
-    </StyledWrapper>
+            </AnimatedDiv>
+          </CardContainer>
+          <PickButton ghost onClick={handleAdvanceNextPick}>Pick</PickButton>
+        </CardPickContainer>
+      )}
+    </>
   );
 };
 
-export default FlipCard;
+export default Card;

@@ -4,7 +4,6 @@ import { theme } from "../../utils/theme";
 import { GlobalStyle } from "../../utils/globalStyle";
 import MainHead from "../layout/MainHead";
 import { Layout } from "antd";
-import { MainFooter } from "./MainFooter";
 import { MainNavbar } from "./MainNavbar"; 
 import styled from "styled-components"
 

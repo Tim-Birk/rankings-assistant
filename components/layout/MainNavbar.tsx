@@ -11,9 +11,10 @@ const TitleContainer = styled.div`
         width: 100%;
         display: flex;
         align-items: center;
+        margin-left: 1rem;
         
         @media ${theme.device.tablet} { 
-       
+          margin-left: 0;
         }
 
         @media (max-width: 400px){
@@ -82,6 +83,21 @@ const StyledMenu = styled(Menu)`
   width: 30%;
   display: flex;
   justify-content: flex-end;
+  margin-right: 1rem;
+  @media (max-width: 410px) {
+    width: 100%;
+    justify-content: flex-start;
+    margin-right: 0;
+  }
+`;
+
+const NavItemsContainer = styled.div`
+  border-bottom-width: 0px;
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: flex-end;
   @media (max-width: 410px) {
     width: 100%;
     justify-content: flex-start;
@@ -95,45 +111,32 @@ export const MainNavbar = () => {
 
   return (
     <StyledHeader style={{ backgroundColor: "rgba(5, 5, 5, 1)" }}>
-      <TitleContainer>
-        <Link href="/">
-          <a>
-            <Title>
-              <img src="/logo.svg" alt="Rankings Assistant Logo" />
-              <div>
-                <h2>Fantasy Rankings Assistant</h2>
-                <p>Your personal fantasy football rankings assistant</p>
-              </div>
-            </Title>
-          </a>
-        </Link>
-      </TitleContainer>
-      <StyledMenu
-        theme="dark"
-        mode="horizontal"
-        style={{ lineHeight: "64px", backgroundColor: "rgba(5, 5, 5, 0.8)" }}
-      >
-        <Menu.Item key="/">
+      <NavItemsContainer>
+        <TitleContainer>
           <Link href="/">
-            <a style={{ color: "rgba(255, 255, 255, 0.90)" }}>Home</a>
+            <a>
+              <Title>
+                <img src="/logo.svg" alt="Rankings Assistant Logo" />
+                <div>
+                  <h2>Fantasy Rankings Assistant</h2>
+                  <p>Your personal fantasy football rankings assistant</p>
+                </div>
+              </Title>
+            </a>
           </Link>
-        </Menu.Item>
-        {/* {user && !loading
-          ? [
-              <Menu.Item key="/api/logout">
-                <Link href="/api/logout">
-                  <a>Logout</a>
-                </Link>
-              </Menu.Item>,
-            ]
-          : [
-              <Menu.Item key="/api/login">
-                <Link href="/api/login">
-                  <a>Login</a>
-                </Link>
-              </Menu.Item>,
-            ]} */}
-      </StyledMenu>
+        </TitleContainer>
+        <StyledMenu
+          theme="dark"
+          mode="horizontal"
+          style={{ lineHeight: "64px", backgroundColor: "rgba(5, 5, 5, 0.8)" }}
+        >
+          <Menu.Item key="/" style={{padding: "0 20px 0 0"}}>
+            <Link href="/">
+              <a style={{ color: "rgba(255, 255, 255, 0.90)" }}>Home</a>
+            </Link>
+          </Menu.Item>
+        </StyledMenu>
+      </NavItemsContainer>
     </StyledHeader>
   );
 };
