@@ -1,30 +1,30 @@
 
 let players = [];
-let playerNames = document.querySelectorAll(".player-name");
-let playerPortraits = document.querySelectorAll(".player-portrait img");
+let allPlayerNames = document.querySelectorAll("td.all.name > div > div.player-right > div.player-right-line-one > div > a")
+let allPlayerPortraits = document.querySelectorAll("td.all.name div.player-portrait")
+let allPlayerInfo = document.querySelectorAll("td.all.name > div > div.player-right > div.player-right-line-two")
 
-for (let i = 0; i < playerNames.length; i++) {
+for (let i = 0; i < allPlayerNames .length; i++) {
   const rank = i + 1;
-  const name = playerNames[i].innerText;
+  const name = allPlayerNames[i].innerText;
+  const info = allPlayerInfo[i].innerText;
   let image = null;
   const playersAhead = [];
   const playersBehind = [];
 
-  try {
-    if (playerPortraits[i].src){
-      image = playerPortraits[i].src
-    }
-  } catch {
-    console.log('error')
-  }
+  if(allPlayerPortraits[i].children[0].src) {
+    image = allPlayerPortraits[i].children[0].src;
+  } 
+
   let player = {
     rank,
     name,
+    info,
     image,
-    playersAhead,
-    playersBehind
   }
   players.push(player)
+
 }
+
 
 console.log(players)
