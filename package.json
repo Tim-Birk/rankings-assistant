@@ -16,7 +16,7 @@
     "@ant-design/icons": "^4.2.2",
     "@apollo/react-hooks": "^4.0.0",
     "@apollo/react-ssr": "^4.0.0",
-    "@auth0/nextjs-auth0": "^0.15.0",
+    "@auth0/nextjs-auth0": "^1.4.2",
     "@graphql-codegen/cli": "^1.17.6",
     "@graphql-codegen/typescript": "^1.17.6",
     "@graphql-codegen/typescript-operations": "^1.17.6",
